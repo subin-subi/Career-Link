@@ -1,6 +1,6 @@
-// src/services/api.js
+import { BASE_URL, JOBS_ENDPOINT } from "../constant/apiConstants";
 export const fetchRemoteJobs = async () => {
-  const response = await fetch("https://remotive.com/api/remote-jobs");
+   const response = await fetch(`${BASE_URL}${JOBS_ENDPOINT}`);;
 
   if (!response.ok) {
     throw new Error("Failed to fetch jobs");

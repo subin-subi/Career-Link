@@ -1,11 +1,39 @@
 import Navbar from "../../components/Navbar/Navbar";
+import ProfileSidebar from "../../components/Profile/ProfileSidebar";
+import FeedPage from "../../components/Feed/FeedPage"
+import RightSidebar from "../../components/Profile/RightSidebar";
 
 export default function Home() {
   return (
-    <div className="p-6">
+    <div className="min-h-screen bg-gray-100 pt-28">
 
-        <Navbar/>
-      <h1 className="text-2xl font-bold">Home Page</h1>
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Main Layout */}
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6">
+
+        {/* Sidebar (Desktop Only) */}
+      <div className="hidden lg:block w-72">
+  <div className="sticky top-28">
+    <ProfileSidebar />
+  </div>
+</div>
+
+
+        {/* Feed */}
+        <div className="flex-1 max-w-2xl w-full">
+          <FeedPage />
+        </div>
+        
+ {/* Right Sidebar */}
+        <div className="hidden lg:block w-80">
+          <div className="sticky top-28">
+            <RightSidebar />
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
