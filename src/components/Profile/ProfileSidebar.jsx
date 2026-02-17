@@ -1,6 +1,15 @@
-import { FiUsers, FiUserPlus, FiFileText } from "react-icons/fi";
+import { FiUsers, FiUserPlus, FiFileText, FiLogOut } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileSidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // optional: clear token/localStorage
+    localStorage.removeItem("token");
+
+    navigate("/login");
+  };
   return (
     <div className="w-full space-y-6">
 
@@ -50,6 +59,13 @@ export default function ProfileSidebar() {
           <FiFileText size={20} />
           <span className="font-medium">Pages</span>
         </div>
+            <div
+      onClick={handleLogout}
+      className="flex items-center gap-3 cursor-pointer hover:text-blue-600"
+    >
+      <FiLogOut size={20} />
+      <span className="font-medium">Logout</span>
+    </div>
 
       </div>
 

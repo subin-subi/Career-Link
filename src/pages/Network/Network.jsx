@@ -1,5 +1,6 @@
 
 import Navbar from "../../components/Navbar/Navbar";
+import BottomNav from "../JobSearch/BottomNav";
 import LeftSide from "./LeftSides/Leftside";
 import Pending from "./RightSide/Pending";
 import People from "./RightSide/People";
@@ -38,6 +39,7 @@ export default function NetworkPage() {
         </div>
 
       </div>
+      <BottomNav/>
     </div>
   );
 }

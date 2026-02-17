@@ -2,6 +2,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import ProfileSidebar from "../../components/Profile/ProfileSidebar";
 import FeedPage from "../../components/Feed/FeedPage"
 import RightSidebar from "../../components/Profile/RightSidebar";
+import BottomNav from "../JobSearch/BottomNav";
 
 export default function Home() {
   return (
@@ -33,7 +34,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+<BottomNav/>
     </div>
   );
 }
