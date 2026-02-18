@@ -3,6 +3,7 @@ import ProfileSidebar from "../../components/Profile/ProfileSidebar";
 import ProfileCenterPage from "./Center/ProfileCenterPage";
 import RightSide from "./Right/RightSide";
 import Navbar from "../../components/Navbar/Navbar"
+import BottomNav from "../JobSearch/BottomNav";
 
 export default function ProfilePage() {
   return (
@@ -30,6 +31,7 @@ export default function ProfilePage() {
         </div>
 
       </div>
+      <BottomNav/>
     </div>
   );
 }

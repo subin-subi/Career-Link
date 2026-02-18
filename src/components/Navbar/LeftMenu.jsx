@@ -5,7 +5,7 @@ export default function LeftMenu() {
 
       
       {/* Logo */}
-      <div className="text-2xl font-bold text-black mr-6">
+      <div className="text-2xl font-bold text-white mr-6">
         ZECPATH
       </div>
 

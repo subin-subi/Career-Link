@@ -1,6 +1,8 @@
-import { FiSearch, FiMenu, FiUser, FiMic } from "react-icons/fi";
+import { FiSearch, FiUser, FiMic } from "react-icons/fi";
+import { MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
-export default function MobileMenu({ open, setOpen }) {
+export default function MobileMenu() {
   return (
     <div className="flex md:hidden items-center justify-between">
 
@@ -18,12 +20,11 @@ export default function MobileMenu({ open, setOpen }) {
         <FiMic className="text-gray-500" />
       </div>
 
-      {/* Right: Hamburger */}
-      <FiMenu
-        size={26}
-        className="cursor-pointer"
-        onClick={() => setOpen(!open)}
-      />
+      {/* Right: Chat Icon */}
+      <Link to="/chat">
+        <MessageCircle size={26} className="cursor-pointer text-white" />
+      </Link>
+
     </div>
   );
 }

@@ -50,15 +50,29 @@ export default function Menu() {
 
 
 
-      <div className="flex flex-col items-center cursor-pointer hover:text-gray-300">
-        <FiMessageSquare size={iconSize} />
-        <span className="text-xs mt-1">Messaging</span>
-      </div>
+     <Link
+  to="/chat"
+  className="flex flex-col items-center cursor-pointer hover:text-gray-300"
+>
+  <FiMessageSquare size={iconSize} />
+ <span className="text-xs mt-1">Messaging</span>
+</Link>
 
-      <div className="flex flex-col items-center cursor-pointer hover:text-gray-300">
-        <FiBell size={iconSize} />
+
+
+     <Link
+  to="/notifications"
+  className="flex flex-col items-center cursor-pointer hover:text-gray-300"
+>
+ <FiBell size={iconSize} />
         <span className="text-xs mt-1">Notifications</span>
-      </div>
+</Link>
+
+
+
+
+    
+
 
     
 
