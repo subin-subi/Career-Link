@@ -7,6 +7,7 @@ import NetworkPage from "../pages/Network/Network";
 import ProfileCenterPage from "../pages/Profile/ProfilePage";
 import Notifications from "../pages/Notifications/NotificationsPage";
 import Message from "../pages/chat/chat";
+import Settings from "../pages/Settings/Setting";
 
 
 export default function AppRoutes() {
@@ -23,6 +24,7 @@ export default function AppRoutes() {
         <Route path="/network" element={<NetworkPage/>}/>
         <Route path="/notifications" element={<Notifications/>}/>
         <Route path="/chat" element={<Message/>}/>
+        <Route path="/settings" element={<Settings/>}/>
       </Routes>
     </>
   );

@@ -1,15 +1,17 @@
+import { Compass } from "lucide-react";
 
 export default function LeftMenu() {
   return (
-   <div className="flex items-center gap-6">
-
+    <div className="flex items-center gap-2">
       
-      {/* Logo */}
-      <div className="text-2xl font-bold text-white mr-6">
-        ZECPATH
+      {/* Logo Icon */}
+      <Compass size={28} className="text-white" />
+
+      {/* Logo Text */}
+      <div className="text-2xl font-bold text-white">
+        CareerLink
       </div>
 
-     
     </div>
   );
 }
