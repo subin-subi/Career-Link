@@ -5,7 +5,7 @@ import Option from "./Option";
 
 import { validateLogin } from "../../validations/authValidation";
 import { loginUser } from "../../services/authService";
-import useAuth from "../../context/useAuth";
+import {useAuth} from "../../context/useAuth";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 
@@ -31,7 +31,7 @@ const handleSubmit = async (e) => {
 
   try {
     const data = await loginUser(form);
-    console.log(data);
+  
     login(data);
     navigate("/");
   } catch (err) {
