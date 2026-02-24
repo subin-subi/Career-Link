@@ -6,6 +6,7 @@ import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 import { fetchRemoteJobs } from "../../services/api";
 import ProfileSidebar from "../../components/Profile/ProfileSidebar";
+import ApplyButton from "../../components/Button/Apply";
 export default function JobsPage() {
   
 const [jobs, setJobs] = useState([]);
@@ -67,14 +68,7 @@ useEffect(() => {
               <p>Company: {job.company_name}</p>
               <p>Category: {job.category}</p>
 
-              <a
-                href={job.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 font-semibold mt-2 inline-block"
-              >
-                Apply Now
-              </a>
+             <ApplyButton to={`/job-apply`} />
 
               <p className="text-xs text-gray-500 mt-2">
                 Posted: {job.publication_date}
