@@ -1,13 +1,13 @@
 import { FiUsers, FiUserPlus, FiFileText, FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/useAuth";
 
 export default function ProfileSidebar() {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleLogout = () => {
-    // optional: clear token/localStorage
-    localStorage.removeItem("token");
-
+    logout();
     navigate("/login");
   };
   return (
@@ -16,7 +16,7 @@ export default function ProfileSidebar() {
 
       {/* Profile Card */}
       <div className="bg-white rounded-2xl shadow-md overflow-hidden">
-        
+
         {/* Top Banner */}
         <div className="h-28 bg-blue-900 relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 top-16">
@@ -44,7 +44,7 @@ export default function ProfileSidebar() {
 
       {/* Followers Card */}
       <div className="bg-white rounded-2xl shadow-md p-6 space-y-5">
-        
+
         <div className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
           <FiUsers size={20} />
           <span className="font-medium">Followers</span>
@@ -59,13 +59,13 @@ export default function ProfileSidebar() {
           <FiFileText size={20} />
           <span className="font-medium">Pages</span>
         </div>
-            <div
-      onClick={handleLogout}
-      className="flex items-center gap-3 cursor-pointer hover:text-blue-600"
-    >
-      <FiLogOut size={20} />
-      <span className="font-medium">Logout</span>
-    </div>
+        <div
+          onClick={handleLogout}
+          className="flex items-center gap-3 cursor-pointer hover:text-blue-600"
+        >
+          <FiLogOut size={20} />
+          <span className="font-medium">Logout</span>
+        </div>
 
       </div>
 

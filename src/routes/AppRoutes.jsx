@@ -18,11 +18,13 @@ export default function AppRoutes() {
   return (
     <Routes>
 
-      {/* Public Routes */}
+      {/* General Route */}
+      <Route path="/" element={<Landing />} />
+
+      {/* Auth Routes (Restricted when logged in) */}
       <Route element={<PublicRoute />}>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Landing />} />
       </Route>
 
       {/* Private Routes */}
