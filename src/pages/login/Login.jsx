@@ -33,7 +33,7 @@ const handleSubmit = async (e) => {
     const data = await loginUser(form);
   
     login(data);
-    navigate("/");
+    navigate("/home");
   } catch (err) {
     alert(err.message);
   }
