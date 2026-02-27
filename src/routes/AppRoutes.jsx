@@ -11,6 +11,7 @@ import Message from "../pages/chat/chat";
 import Settings from "../pages/Settings/Setting";
 
 import PrivateRoute from "./PrivateRoute";
+import Landing from "../pages/landing/Body";
 
 export default function AppRoutes() {
   return (
@@ -22,13 +23,14 @@ export default function AppRoutes() {
 
       {/* Private Routes */}
       <Route element={<PrivateRoute />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/job" element={<JobsPage />} />
         <Route path="/profile" element={<ProfileCenterPage />} />
         <Route path="/network" element={<NetworkPage />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/chat" element={<Message />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/" element={<Landing />} />
       </Route>
 
     </Routes>

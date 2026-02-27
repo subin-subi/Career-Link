@@ -6,6 +6,7 @@ import {
   FiUser,
   FiGrid,
   FiMessageSquare,
+  FiSettings,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -18,7 +19,7 @@ export default function Menu() {
       
 
       <Link
-  to="/"
+  to="/home"
   className="flex flex-col items-center cursor-pointer hover:text-gray-300"
 >
    <FiHome size={iconSize} />
@@ -68,6 +69,15 @@ export default function Menu() {
         <span className="text-xs mt-1">Notifications</span>
 </Link>
 
+
+
+    <Link
+  to="/settings"
+  className="flex flex-col items-center cursor-pointer hover:text-gray-300"
+>
+  <FiSettings size={iconSize} />
+  <span className="text-xs mt-1">Settings</span>
+</Link>
 
 
 

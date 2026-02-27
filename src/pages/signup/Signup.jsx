@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Option from "../login/Option";
 import GoogleButton from "../../components/common/GoogleButton";
+import { validateSignup } from "../../validations/signupValidation";
+import { registerUser } from "../../services/signupService";
 
 function Signup() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -10,6 +15,8 @@ function Signup() {
     confirmPassword: "",
     agree: false,
   });
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -21,26 +28,31 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const validationErrors = validateSignup(form);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      registerUser(form);
+      alert("Signup Successful!");
+      navigate("/login");
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#0f1b5b] flex items-center justify-center px-4">
       <div className="bg-gray-100 w-full max-w-md rounded-2xl p-6 shadow-lg">
 
-        {/* Logo */}
         <h1 className="text-black font-bold text-center text-xl mb-4">
           ZECPATH
         </h1>
 
-        {/* Tabs */}
         <Option />
 
-        {/* Heading */}
         <h2 className="text-xl font-bold mb-4 text-center">
           Create an account
         </h2>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
 
           <input
@@ -49,9 +61,9 @@ function Signup() {
             placeholder="Full Name"
             value={form.name}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow focus:outline-none"
-            required
+            className="w-full p-3 rounded-lg shadow"
           />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 
           <input
             type="email"
@@ -59,9 +71,9 @@ function Signup() {
             placeholder="Email"
             value={form.email}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow focus:outline-none"
-            required
+            className="w-full p-3 rounded-lg shadow"
           />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
 
           <input
             type="password"
@@ -69,9 +81,9 @@ function Signup() {
             placeholder="Password"
             value={form.password}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow focus:outline-none"
-            required
+            className="w-full p-3 rounded-lg shadow"
           />
+          {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
 
           <input
             type="password"
@@ -79,11 +91,12 @@ function Signup() {
             placeholder="Confirm Password"
             value={form.confirmPassword}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow focus:outline-none"
-            required
+            className="w-full p-3 rounded-lg shadow"
           />
+          {errors.confirmPassword && (
+            <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+          )}
 
-          {/* Terms */}
           <div className="flex items-center text-sm">
             <input
               type="checkbox"
@@ -94,22 +107,21 @@ function Signup() {
             />
             I agree to the Terms & Conditions
           </div>
+          {errors.agree && <p className="text-red-500 text-sm">{errors.agree}</p>}
 
-          {/* Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 text-white rounded-full font-semibold shadow-md hover:bg-blue-700"
+            className="w-full py-3 bg-blue-600 text-white rounded-full font-semibold"
           >
             Sign Up
           </button>
         </form>
 
-        {/* Divider */}
         <div className="text-center my-4 text-gray-500 text-sm">
-  Or Continue With
-</div>
+          Or Continue With
+        </div>
 
-<GoogleButton />
+        <GoogleButton />
       </div>
     </div>
   );
