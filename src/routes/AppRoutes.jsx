@@ -11,6 +11,7 @@ import Message from "../pages/chat/chat";
 import Settings from "../pages/Settings/Setting";
 
 import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 import Landing from "../pages/landing/Body";
 
 export default function AppRoutes() {
@@ -18,8 +19,11 @@ export default function AppRoutes() {
     <Routes>
 
       {/* Public Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route element={<PublicRoute />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={<Landing />} />
+      </Route>
 
       {/* Private Routes */}
       <Route element={<PrivateRoute />}>
@@ -30,7 +34,6 @@ export default function AppRoutes() {
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/chat" element={<Message />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/" element={<Landing />} />
       </Route>
 
     </Routes>
