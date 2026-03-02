@@ -13,6 +13,12 @@ import Settings from "../pages/Settings/Setting";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Landing from "../pages/landing/Body";
+import EmployerDashboard from "../pages/employer/EmployerDashboard";
+import CandidateDashboard from "../pages/candidate/CandidateDashboard";
+import JobDetails from "../pages/JobSearch/JobApply/JobApply";
+import ApplyIntern from "../pages/JobSearch/JobSubmitting/JobSubmit";
+import ManageJobs from "../pages/employer/ManageJobs";
+import Dashboard from "../pages/employer/ManageJobs";
 
 export default function AppRoutes() {
   return (
@@ -31,11 +37,16 @@ export default function AppRoutes() {
       <Route element={<PrivateRoute />}>
         <Route path="/home" element={<Home />} />
         <Route path="/job" element={<JobsPage />} />
+        <Route path="/job-apply" element={<JobDetails />} />
+        <Route path="/job-submit" element={<ApplyIntern />} />
         <Route path="/profile" element={<ProfileCenterPage />} />
         <Route path="/network" element={<NetworkPage />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/chat" element={<Message />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/dashboard" element={<EmployerDashboard />} />
+        <Route path="/candidate" element={<CandidateDashboard />} />
+        <Route path="/dashboard-form" element={<Dashboard />} />
       </Route>
 
     </Routes>
