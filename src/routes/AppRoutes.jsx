@@ -19,6 +19,7 @@ import JobDetails from "../pages/JobSearch/JobApply/JobApply";
 import ApplyIntern from "../pages/JobSearch/JobSubmitting/JobSubmit";
 import ManageJobs from "../pages/employer/ManageJobs";
 import Dashboard from "../pages/employer/ManageJobs";
+import Jobs from "../pages/candidate/Jobs";
 
 export default function AppRoutes() {
   return (
@@ -47,6 +48,7 @@ export default function AppRoutes() {
         <Route path="/dashboard" element={<EmployerDashboard />} />
         <Route path="/candidate" element={<CandidateDashboard />} />
         <Route path="/dashboard-form" element={<Dashboard />} />
+        <Route path="/candidate-form" element={<Jobs/>} />
       </Route>
 
     </Routes>
