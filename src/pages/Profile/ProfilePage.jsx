@@ -1,15 +1,20 @@
-
 import ProfileSidebar from "../../components/Profile/ProfileSidebar";
 import ProfileCenterPage from "./Center/ProfileCenterPage";
 import RightSide from "./Right/RightSide";
-import Navbar from "../../components/Navbar/Navbar"
+import Navbar from "../../components/Navbar/Navbar";
 import BottomNav from "../JobSearch/BottomNav";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function ProfilePage() {
+  const { theme } = useTheme();
+
   return (
-    <div className="min-h-screen bg-gray-100 pt-28">
-      <Navbar/>
-      <div className="max-w-7xl mx-auto flex gap-6 items-start">
+    <div
+      className={`min-h-screen ${theme.bg} ${theme.textPrimary} pt-28 transition-all duration-300`}
+    >
+      <Navbar />
+
+      <div className="max-w-7xl mx-auto flex gap-6 items-start px-4">
 
         {/* LEFT SIDEBAR */}
         <div className="hidden lg:block w-72">
@@ -23,15 +28,16 @@ export default function ProfilePage() {
           <ProfileCenterPage />
         </div>
 
-        {/* RIGHT SIDEBAR (optional) */}
+        {/* RIGHT SIDEBAR */}
         <div className="hidden lg:block w-80">
           <div className="sticky top-28">
-            < RightSide/>
+            <RightSide />
           </div>
         </div>
 
       </div>
-      <BottomNav/>
+
+      <BottomNav />
     </div>
   );
-}
+} 
