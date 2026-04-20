@@ -6,7 +6,7 @@ export default function BottomNav() {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white flex justify-around py-3 rounded-t-3xl md:hidden">
 
-      <Link to="/" className="flex flex-col items-center text-xs">
+      <Link to="/home" className="flex flex-col items-center text-xs">
         <Home size={20} />
         Home
       </Link>

@@ -1,101 +1,77 @@
-import { useState } from "react";
-import FilterSelect from "./FilterSelect";
-import ToggleSwitch from "./ToggleSwitch";
-
-function FilterForm() {
-  const [filters, setFilters] = useState({
-    jobType: "",
-    workplaceType: "",
-    experienceLevel: "",
-    minOpening: "",
-    maxOpening: "",
-    hasQuestions: true,
-  });
-
-  const handleChange = (field, value) => {
-    setFilters((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
-  const applyFilters = () => {
-    console.log("Applied Filters:", filters);
-  };
-
+export default function JobFilterPage({ filters, setFilters }) {
   return (
-    <div className="w-[350px] bg-white p-8 rounded-xl shadow-md mx-auto mt-10">
-      <FilterSelect
-        label="Job Type"
-        options={["Full Time", "Part Time", "Internship"]}
-        value={filters.jobType}
-        onChange={(e) => handleChange("jobType", e.target.value)}
-      />
+    <div className="bg-white p-4 sm:p-5 rounded-2xl shadow-md border flex flex-col gap-4">
 
-      <FilterSelect
-        label="Workplace Type"
-        options={["Remote", "Hybrid", "Onsite"]}
-        value={filters.workplaceType}
-        onChange={(e) =>
-          handleChange("workplaceType", e.target.value)
-        }
-      />
+      {/* 🔹 Header */}
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm sm:text-base font-semibold text-gray-800">
+          Filters
+        </h3>
+        <button
+          onClick={() =>
+            setFilters({ search: "", category: "All" })
+          }
+          className="text-xs sm:text-sm text-blue-600 hover:underline"
+        >
+          Clear
+        </button>
+      </div>
 
-      <FilterSelect
-        label="Experience Level"
-        options={["Fresher", "Mid Level", "Senior"]}
-        value={filters.experienceLevel}
-        onChange={(e) =>
-          handleChange("experienceLevel", e.target.value)
-        }
-      />
-
-      <div className="mb-5">
-        <label className="block font-semibold mb-2">
-          Number of openings
-        </label>
-
-        <div className="flex gap-3">
+      {/* 🔍 Search */}
+      <div className="flex flex-col gap-1">
+        <label className="text-xs text-gray-500">Search</label>
+        <div className="relative">
           <input
-            type="number"
-            placeholder="Min"
-            value={filters.minOpening}
+            type="text"
+            placeholder="Job title or company..."
+            value={filters.search}
             onChange={(e) =>
-              handleChange("minOpening", e.target.value)
+              setFilters({ ...filters, search: e.target.value })
             }
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border rounded-lg px-3 py-2 pl-9 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-
-          <input
-            type="number"
-            placeholder="Max"
-            value={filters.maxOpening}
-            onChange={(e) =>
-              handleChange("maxOpening", e.target.value)
-            }
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-          />
+          <span className="absolute left-3 top-2.5 text-gray-400 text-sm">
+            🔍
+          </span>
         </div>
       </div>
 
-      <ToggleSwitch
-        checked={filters.hasQuestions}
-        onChange={() =>
-          handleChange(
-            "hasQuestions",
-            !filters.hasQuestions
-          )
-        }
-      />
+      {/* 🎯 Category */}
+      <div className="flex flex-col gap-1">
+        <label className="text-xs text-gray-500">Category</label>
+        <select
+          value={filters.category}
+          onChange={(e) =>
+            setFilters({ ...filters, category: e.target.value })
+          }
+          className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="All">All Categories</option>
+          <option value="Development">Development</option>
+          <option value="Design">Design</option>
+          <option value="Marketing">Marketing</option>
+        </select>
+      </div>
 
-      <button
-        onClick={applyFilters}
-        className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-300"
-      >
-        Apply filters
-      </button>
+      {/* 📊 Quick Filters (Optional UI boost) */}
+      <div className="flex flex-wrap gap-2">
+        {["Software Development", "Design", "Marketing"].map((cat) => (
+          <button
+            key={cat}
+            onClick={() =>
+              setFilters({ ...filters, category: cat })
+            }
+            className={`text-xs px-3 py-1 rounded-full border transition ${
+              filters.category === cat
+                ? "bg-blue-600 text-white border-blue-600"
+                : "text-gray-600 hover:bg-gray-100"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
     </div>
   );
 }
-
-export default FilterForm;

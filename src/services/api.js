@@ -7,5 +7,5 @@ export const fetchRemoteJobs = async () => {
   }
 
   const data = await response.json();
-  return data.jobs.slice(0, 5);
+  return data.jobs
 };

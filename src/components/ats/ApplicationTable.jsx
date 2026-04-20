@@ -23,38 +23,45 @@ export default function ApplicationTable() {
 
       {/* 🔹 Desktop Table */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full text-sm min-w-[600px]">
-          <thead>
-            <tr className="text-gray-500 border-b">
-              <th className="py-2 text-left">Name</th>
-              <th className="text-left">Position</th>
-              <th>Status</th>
-              <th className="text-left">Actions</th>
-            </tr>
-          </thead>
+       <table className="w-full text-sm min-w-[600px]">
+  <thead>
+    <tr className="text-gray-500 border-b">
+      <th className="py-2 text-left font-semibold">Name</th>
+      <th className="text-left font-semibold">Position</th>
+      <th className="font-semibold">Status</th>
+      <th className="text-left font-semibold">Actions</th>
+    </tr>
+  </thead>
 
-          <tbody>
-            {data.map((app) => (
-              <tr key={app.id} className="border-b hover:bg-gray-50">
-                <td className="py-3">{app.name}</td>
-                <td>{app.role}</td>
-                <td>
-                  <StatusBadge status={app.status} />
-                </td>
-                <td>
-                  <ActionButtons
-                    onShortlist={() =>
-                      updateStatus(app.id, "Shortlisted")
-                    }
-                    onReject={() =>
-                      updateStatus(app.id, "Rejected")
-                    }
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+ <tbody className="text-gray-800 font-medium">
+  {data.map((app) => (
+    <tr key={app.id} className="border-b hover:bg-gray-50">
+      <td className="py-3 font-semibold text-gray-900">
+        {app.name}
+      </td>
+
+      <td className="font-medium text-gray-800">
+        {app.role}
+      </td>
+
+      <td>
+        <StatusBadge status={app.status} />
+      </td>
+
+      <td>
+        <ActionButtons
+          onShortlist={() =>
+            updateStatus(app.id, "Shortlisted")
+          }
+          onReject={() =>
+            updateStatus(app.id, "Rejected")
+          }
+        />
+      </td>
+    </tr>
+  ))}
+</tbody>
+</table>
       </div>
 
       {/* 🔹 Mobile Card Layout */}
