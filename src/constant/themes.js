@@ -2,8 +2,8 @@
 export const themes = {
   light: {
     // Background colors
-    bg: "bg-[#F5F3EF]", // Beige/cream background
-    cardBg: "bg-gradient-to-br from-[#dadadc] to-[#898eac]", // Subtle gradient for cards
+     bg: "bg-white", 
+  cardBg: "bg-white", 
     sidebarBg: "bg-white",
     topbarBg: "bg-white",
     
