@@ -23,6 +23,7 @@ import Jobs from "../pages/candidate/Jobs";
 import CandidateProfile from "../pages/Profile/CandidateProfile";
 import EmployerDashboardPage from "../pages/employerDashboard/EmployerDashboard";
 import ATSDashboard from "../pages/ATS/ATSDashboard";
+import PremiumPaymentPage from "../pages/payment/PremiumPaymentPage";
 
 export default function AppRoutes() {
   return (
@@ -55,6 +56,7 @@ export default function AppRoutes() {
         <Route path="/profile-form" element={<CandidateProfile/>} />
         <Route path="/employer-dashboard" element={<EmployerDashboardPage/>}/>
         <Route path="/ats" element={<ATSDashboard/>}/>
+        <Route path="/pay" element={<PremiumPaymentPage/>}/>
       </Route>
 
     </Routes>

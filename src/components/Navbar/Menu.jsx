@@ -81,11 +81,6 @@ export default function Menu() {
 
 
 
-    
-
-
-    
-
 
      <Link
   to="/profile"
@@ -104,10 +99,17 @@ export default function Menu() {
         <span className="text-xs mt-1">For Business</span>
       </div>
 
-      <div className="flex flex-col items-center cursor-pointer hover:text-gray-300">
-        <FiBriefcase size={iconSize} />
-        <span className="text-xs mt-1">Try Premium</span>
-      </div>
+   
+
+     <Link
+  to="/pay"
+ className="flex flex-col items-center cursor-pointer hover:text-gray-300"
+>
+    <FiBriefcase size={iconSize} />
+         <span className="text-xs mt-1">Try Premium</span>
+</Link>
+
+
     </div>
   );
 }
