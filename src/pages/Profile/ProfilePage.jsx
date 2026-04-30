@@ -1,43 +1,79 @@
 import ProfileSidebar from "../../components/Profile/ProfileSidebar";
-import ProfileCenterPage from "./Center/ProfileCenterPage";
 import RightSide from "./Right/RightSide";
 import Navbar from "../../components/Navbar/Navbar";
 import BottomNav from "../JobSearch/BottomNav";
 import { useTheme } from "../../context/ThemeContext";
 
-export default function ProfilePage() {
+import ProfileHeader from "./Center/ProfileHeader";
+import StatsSection from "./Center/StatsSection";
+import InfoCard from "./Center/InfoCard";
+import ResumeSection from "./Center/ResumeSection";
+import { profileData } from "../../data/profileData";
+
+export default function ProfileBody() {
   const { theme } = useTheme();
 
   return (
     <div
-      className={`min-h-screen ${theme.bg} ${theme.textPrimary} pt-28 transition-all duration-300`}
+      className={`min-h-screen ${theme.bg} ${theme.textPrimary} pt-28 pb-24 transition-all duration-300`}
     >
+      {/* Navbar */}
       <Navbar />
 
+      {/* Main Layout */}
       <div className="max-w-7xl mx-auto flex gap-6 items-start px-4">
-
-        {/* LEFT SIDEBAR */}
-        <div className="hidden lg:block w-72">
+        
+        {/* Left Sidebar */}
+        <div className="hidden lg:block w-72 shrink-0">
           <div className="sticky top-28">
             <ProfileSidebar />
           </div>
         </div>
 
-        {/* CENTER CONTENT */}
-        <div className="flex-1 max-w-4xl">
-          <ProfileCenterPage />
+        {/* Center Content */}
+        <div className="flex-1 min-w-0">
+          <div className="space-y-4 p-4 w-full bg-white rounded-2xl shadow-sm border">
+            <ProfileHeader profile={profileData} />
+            <StatsSection stats={profileData.stats} />
+
+            <InfoCard title="Bio" value={profileData.bio} editable />
+            <InfoCard
+              title="Education"
+              value={profileData.education}
+              addable
+            />
+            <InfoCard
+              title="Experiences"
+              value={profileData.experience}
+              addable
+            />
+            <InfoCard title="Skills" value={profileData.skills} editable />
+            <InfoCard
+              title="Portfolio"
+              value={profileData.portfolio}
+              addable
+            />
+
+            <ResumeSection />
+
+            <InfoCard
+              title="Expected Salary"
+              value={profileData.salary}
+              editable
+            />
+          </div>
         </div>
 
-        {/* RIGHT SIDEBAR */}
-        <div className="hidden lg:block w-80">
+        {/* Right Sidebar */}
+        <div className="hidden lg:block w-80 shrink-0">
           <div className="sticky top-28">
             <RightSide />
           </div>
         </div>
-
       </div>
 
+      {/* Bottom Navigation */}
       <BottomNav />
     </div>
   );
-} 
+}
