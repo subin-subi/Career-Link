@@ -1,4 +1,5 @@
 import { FiSun, FiMoon, FiCheck } from "react-icons/fi";
+import { BsMoonStars } from "react-icons/bs"; // 🌌 new icon
 import Navbar from "../../components/Navbar/Navbar";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -28,7 +29,7 @@ export default function Settings() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
 
               {/* Light */}
               <div
@@ -50,7 +51,7 @@ export default function Settings() {
                 )}
               </div>
 
-              {/* Dark */}
+              {/* Dark (BLACK) */}
               <div
                 onClick={() => changeTheme("dark")}
                 className={`relative cursor-pointer border rounded-xl p-6 flex items-center gap-4
@@ -62,10 +63,30 @@ export default function Settings() {
                 <FiMoon size={20} />
                 <div>
                   <h3>Dark Mode</h3>
-                  <p className="text-sm">Easier on eyes</p>
+                  <p className="text-sm">Pure black theme</p>
                 </div>
 
                 {currentTheme === "dark" && (
+                  <FiCheck className="absolute right-4 text-blue-500" />
+                )}
+              </div>
+
+              {/* Midnight */}
+              <div
+                onClick={() => changeTheme("midnight")}
+                className={`relative cursor-pointer border rounded-xl p-6 flex items-center gap-4
+                ${currentTheme === "midnight"
+                    ? "border-blue-500 bg-blue-500/10"
+                    : theme.border
+                  }`}
+              >
+                <BsMoonStars size={20} />
+                <div>
+                  <h3>Midnight</h3>
+                  <p className="text-sm">Cool dark blue theme</p>
+                </div>
+
+                {currentTheme === "midnight" && (
                   <FiCheck className="absolute right-4 text-blue-500" />
                 )}
               </div>

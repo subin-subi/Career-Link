@@ -4,9 +4,17 @@ import { themes } from "../constant/themes";
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState(() => {
-    return localStorage.getItem("app-theme") || "light";
-  });
+  const getInitialTheme = () => {
+    const saved = localStorage.getItem("app-theme");
+
+    if (saved) return saved;
+
+    // 👇 system preference
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
+  };
+
+  const [currentTheme, setCurrentTheme] = useState(getInitialTheme);
 
   const changeTheme = (themeName) => {
     setCurrentTheme(themeName);
@@ -14,6 +22,20 @@ export const ThemeProvider = ({ children }) => {
   };
 
   const theme = themes[currentTheme];
+
+  // ✅ Apply theme to HTML (important)
+  useEffect(() => {
+    const root = document.documentElement;
+
+    // remove old classes
+    root.classList.remove("light", "dark", "midnight");
+
+    // add current theme
+    root.classList.add(currentTheme);
+
+    // smooth transition
+    root.style.transition = "background-color 0.3s, color 0.3s";
+  }, [currentTheme]);
 
   return (
     <ThemeContext.Provider
