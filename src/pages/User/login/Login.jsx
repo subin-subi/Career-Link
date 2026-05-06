@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import GoogleButton from "../../components/common/GoogleButton";
+import GoogleButton from "../../../components/common/GoogleButton";
 import Option from "./Option";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 
-import { validateLogin } from "../../validations/authValidation";
-import { authService } from "../../services/authService";
-import { useAuth } from "../../context/useAuth";
+import { validateLogin } from "../../../validations/authValidation";
+import { authService } from "../../../services/authService";
+import { useAuth } from "../../../context/useAuth";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 function Login() {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Option from "../login/Option";
-import GoogleButton from "../../components/common/GoogleButton";
-import { validateSignup } from "../../validations/signupValidation";
-import { registerUser } from "../../services/signupService";
+import GoogleButton from "../../../components/common/GoogleButton";
+import { validateSignup } from "../../../validations/signupValidation";
+import { registerUser } from "../../../services/signupService";
 
 function Signup() {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { FiSun, FiMoon, FiCheck } from "react-icons/fi";
 import { BsMoonStars } from "react-icons/bs"; // 🌌 new icon
-import Navbar from "../../components/Navbar/Navbar";
-import { useTheme } from "../../context/ThemeContext";
+import Navbar from "../../../components/Navbar/Navbar";
+import { useTheme } from "../../../context/ThemeContext";
 
 export default function Settings() {
   const { currentTheme, changeTheme, theme } = useTheme();

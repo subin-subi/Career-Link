@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
-import Login from "../pages/login/Login";
-import Signup from "../pages/signup/Signup";
+import Login from "../pages/User/login/Login";
+import Signup from "../pages/User/signup/Signup";
 import Home from "../pages/Employee/home/Home";
 import JobsPage from "../pages/JobSearch/JobsPage";
 import NetworkPage from "../pages/Network/Network";
 import ProfileCenterPage from "../pages/Profile/ProfilePage";
-import Notifications from "../pages/Notifications/NotificationsPage";
+import Notifications from "../pages/User/Notifications/NotificationsPage";
 import Message from "../pages/User/chat/chat";
-import Settings from "../pages/Settings/Setting";
+import Settings from "../pages/User/Settings/Setting";
 
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";

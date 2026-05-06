@@ -1,8 +1,8 @@
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 import { ChevronRight } from "lucide-react";
-import Navbar from "../../components/Navbar/Navbar";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar";
-import BottomNav from "../JobSearch/BottomNav";
+import Navbar from "../../../components/Navbar/Navbar";
+import ProfileSidebar from "../../../components/Profile/ProfileSidebar";
+import BottomNav from "../../JobSearch/BottomNav";
 export default function NotificationCenter() {
   const { theme } = useTheme();
 
