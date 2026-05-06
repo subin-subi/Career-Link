@@ -1,6 +1,6 @@
-import Navbar from "../../components/Navbar/Navbar";
-import ComingSoon from "../../components/common/ComingSoon";
-import BottomNav from "../JobSearch/BottomNav";
+import Navbar from "../../../components/Navbar/Navbar";
+import ComingSoon from "../../../components/common/ComingSoon";
+import BottomNav from "../../JobSearch/BottomNav";
 
 export default function Message() {
   return (

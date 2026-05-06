@@ -1,9 +1,9 @@
-import DashboardLayout from "../../layouts/EmployerDashboardLayout";
-import WelcomeBanner from "../../components/employerDashboard/WelcomeBanner";
-import StatsGrid from "../../components/employerDashboard/StatsGrid";
-import RecentApplicationsTable from "../../components/employerDashboard/RecentApplicationsTable";
-import Navbar from "../../components/Navbar/Navbar";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar";
+import DashboardLayout from "../../../layouts/EmployerDashboardLayout";
+import WelcomeBanner from "../../../components/employerDashboard/WelcomeBanner";
+import StatsGrid from "../../../components/employerDashboard/StatsGrid";
+import RecentApplicationsTable from "../../../components/employerDashboard/RecentApplicationsTable";
+import Navbar from "../../../components/Navbar/Navbar";
+import ProfileSidebar from "../../../components/Profile/ProfileSidebar";
 
 export default function EmployerDashboardPage() {
   return (

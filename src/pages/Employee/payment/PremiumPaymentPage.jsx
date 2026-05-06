@@ -1,10 +1,10 @@
-import BenefitCard from "../../components/payment/BenefitCard";
-import PlanCard from "../../components/payment/PlanCard";
-import PaymentMethod from "../../components/payment/PaymentMethod";
-import FooterSecurity from "../../components/payment/FooterSecurity";
-import BottomNav from "../JobSearch/BottomNav";
-import { benefits, plans } from "../../data/paymentData";
-import Navbar from "../../components/Navbar/Navbar";
+import BenefitCard from "../../../components/payment/BenefitCard";
+import PlanCard from "../../../components/payment/PlanCard";
+import PaymentMethod from "../../../components/payment/PaymentMethod";
+import FooterSecurity from "../../../components/payment/FooterSecurity";
+import BottomNav from "../../JobSearch/BottomNav";
+import { benefits, plans } from "../../../data/paymentData";
+import Navbar from "../../../components/Navbar/Navbar";
 
 function PremiumPaymentPage() {
   return (

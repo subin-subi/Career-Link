@@ -1,9 +1,9 @@
 // src/pages/candidate/Jobs.jsx
 
-import JobCard from "../../components/candidate/JobCard";
-import JobFilters from "../../components/candidate/JobFilters";
-import Navbar from "../../components/Navbar/Navbar";
-import jobs from "../../data/candidatedummyJobs";
+import JobCard from "../../../components/candidate/JobCard";
+import JobFilters from "../../../components/candidate/JobFilters";
+import Navbar from "../../../components/Navbar/Navbar";
+import jobs from "../../../data/candidatedummyJobs";
 
 export default function Jobs() {
   return (

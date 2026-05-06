@@ -1,5 +1,5 @@
-import DashboardLayout from "../../layouts/CandidateLayout";
-import StatCard from "../../components/candidate/StatCard";
+import DashboardLayout from "../../../layouts/CandidateLayout";
+import StatCard from "../../../components/candidate/StatCard";
 
 export default function CandidateDashboard() {
   return (

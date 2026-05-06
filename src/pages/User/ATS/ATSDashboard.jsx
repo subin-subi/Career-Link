@@ -1,8 +1,8 @@
-import ATSHeader from "../../components/ats/ATSHeader";
-import StatsCard from "../../components/ats/StatsCard";
-import ApplicationTable from "../../components/ats/ApplicationTable";
+import ATSHeader from "../../../components/ats/ATSHeader";
+import StatsCard from "../../../components/ats/StatsCard";
+import ApplicationTable from "../../../components/ats/ApplicationTable";
 import { FileText, CheckCircle, XCircle } from "lucide-react";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../../components/Navbar/Navbar";
 
 export default function ATSDashboard() {
   return (

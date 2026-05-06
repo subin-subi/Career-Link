@@ -2,28 +2,29 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "../pages/login/Login";
 import Signup from "../pages/signup/Signup";
-import Home from "../pages/home/Home";
+import Home from "../pages/Employee/home/Home";
 import JobsPage from "../pages/JobSearch/JobsPage";
 import NetworkPage from "../pages/Network/Network";
 import ProfileCenterPage from "../pages/Profile/ProfilePage";
 import Notifications from "../pages/Notifications/NotificationsPage";
-import Message from "../pages/chat/chat";
+import Message from "../pages/User/chat/chat";
 import Settings from "../pages/Settings/Setting";
 
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Landing from "../pages/landing/Body";
-import EmployerDashboard from "../pages/employer/EmployerDashboard";
-import CandidateDashboard from "../pages/candidate/CandidateDashboard";
+
+import CandidateDashboard from "../pages/Employee/Candidate/CandidateDashboard";
 import JobDetails from "../pages/JobSearch/JobApply/JobApply";
 import ApplyIntern from "../pages/JobSearch/JobSubmitting/JobSubmit";
-import ManageJobs from "../pages/employer/ManageJobs";
-import Dashboard from "../pages/employer/ManageJobs";
-import Jobs from "../pages/candidate/Jobs";
+
+// import Dashboard from "../pages/employer/ManageJobs";
+import Jobs from "../pages/Employee/Candidate/jobs";
 import CandidateProfile from "../pages/Profile/CandidateProfile";
-import EmployerDashboardPage from "../pages/employerDashboard/EmployerDashboard";
-import ATSDashboard from "../pages/ATS/ATSDashboard";
-import PremiumPaymentPage from "../pages/payment/PremiumPaymentPage";
+
+import EmployerDashboardPage from "../pages/Employee/employer/EmployerDashboard";
+import ATSDashboard from "../pages/User/ATS/ATSDashboard";
+import PremiumPaymentPage from "../pages/Employee/payment/PremiumPaymentPage";
 
 export default function AppRoutes() {
   return (
@@ -49,14 +50,23 @@ export default function AppRoutes() {
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/chat" element={<Message />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/dashboard" element={<EmployerDashboard />} />
+        {/* <Route path="/dashboard" element={<EmployerDashboard />} /> */}
         <Route path="/candidate" element={<CandidateDashboard />} />
-        <Route path="/dashboard-form" element={<Dashboard />} />
+        {/* <Route path="/dashboard-form" element={<Dashboard />} /> */}
         <Route path="/candidate-form" element={<Jobs/>} />
         <Route path="/profile-form" element={<CandidateProfile/>} />
-        <Route path="/employer-dashboard" element={<EmployerDashboardPage/>}/>
         <Route path="/ats" element={<ATSDashboard/>}/>
         <Route path="/pay" element={<PremiumPaymentPage/>}/>
+
+
+
+
+
+
+
+        <Route path="/employer-dashboard" element={<EmployerDashboardPage/>}/>
+
+
       </Route>
 
     </Routes>
