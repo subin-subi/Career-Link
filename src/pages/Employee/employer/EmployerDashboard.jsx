@@ -4,28 +4,39 @@ import StatsGrid from "../../../components/employerDashboard/StatsGrid";
 import RecentApplicationsTable from "../../../components/employerDashboard/RecentApplicationsTable";
 import Navbar from "../../../components/Navbar/Navbar";
 import ProfileSidebar from "../../../components/Profile/ProfileSidebar";
+import BottomNav from "../../JobSearch/BottomNav";
 
 export default function EmployerDashboardPage() {
   return (
-    <DashboardLayout>
-      <Navbar />
+    <>
+      <DashboardLayout>
+        <Navbar />
 
-      <div className="pt-24">
-        <div className="flex gap-6">
-          
-          {/* Hide sidebar on mobile */}
-          <div className="hidden lg:block lg:w-1/4 sticky top-24 self-start">
-            <ProfileSidebar />
-          </div>
+        <div className="pt-24 pb-24">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
 
-          {/* Full width on mobile, 75% on desktop */}
-          <div className="w-full lg:w-3/4 space-y-6">
-            <WelcomeBanner />
-            <StatsGrid />
-            <RecentApplicationsTable />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+              {/* LEFT SIDEBAR */}
+              <div className="hidden lg:block lg:col-span-3">
+                <div className="sticky top-24">
+                  <ProfileSidebar />
+                </div>
+              </div>
+
+              {/* MAIN CONTENT */}
+              <div className="col-span-1 lg:col-span-9 space-y-6">
+                <WelcomeBanner />
+                <StatsGrid />
+                <RecentApplicationsTable />
+              </div>
+
+            </div>
           </div>
         </div>
-      </div>
-    </DashboardLayout>
+      </DashboardLayout>
+
+      <BottomNav />
+    </>
   );
 }

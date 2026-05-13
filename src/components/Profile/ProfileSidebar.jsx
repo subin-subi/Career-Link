@@ -2,19 +2,31 @@ import { FiUsers, FiUserPlus, FiFileText, FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
 import { useTheme } from "../../context/ThemeContext";
-
+import Swal from "sweetalert2";
 export default function ProfileSidebar() {
   const navigate = useNavigate();
   const { logout } = useAuth();
   const { theme } = useTheme();
 
-  const handleLogout = () => {
+
+
+const handleLogout = async () => {
+  const result = await Swal.fire({
+    title: "Logout?",
+    text: "Do you want to logout?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, logout",
+    cancelButtonText: "Cancel",
+  });
+
+  if (result.isConfirmed) {
     logout();
     navigate("/login");
-  };
-
+  }
+};
   return (
-    <div className="w-full space-y-6">
+   <div className="w-full space-y-6 sticky top-28 max-h-[calc(100vh-7rem)] overflow-y-auto">
 
       {/* Profile Card */}
       <div className={`${theme.cardBg} rounded-2xl ${theme.shadowMd} overflow-hidden`}>
@@ -25,7 +37,7 @@ export default function ProfileSidebar() {
             <img
               src="https://randomuser.me/api/portraits/men/32.jpg"
               alt="profile"
-              className="w-20 h-20 rounded-full border-4 ${theme.border} object-cover"
+              className={`w-20 h-20 rounded-full border-4 ${theme.border} object-cover`}
             />
           </div>
         </div>
@@ -62,13 +74,13 @@ export default function ProfileSidebar() {
           <span className="font-medium">Pages</span>
         </div>
 
-        <div
-          onClick={handleLogout}
-          className={`flex items-center gap-3 cursor-pointer ${theme.hover}`}
-        >
-          <FiLogOut size={20} />
-          <span className="font-medium">Logout</span>
-        </div>
+      <div
+  onClick={handleLogout}
+  className={`flex items-center gap-3 cursor-pointer ${theme.hover}`}
+>
+  <FiLogOut size={20} />
+  <span className="font-medium">Logout</span>
+</div>
 
       </div>
 

@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Option from "../login/Option";
 import GoogleButton from "../../../components/common/GoogleButton";
+
 import { validateSignup } from "../../../validations/signupValidation";
 import { registerUser } from "../../../services/signupService";
 
+import { useTheme } from "../../../context/ThemeContext";
+
 function Signup() {
   const navigate = useNavigate();
+
+  const { theme } = useTheme();
 
   const [form, setForm] = useState({
     name: "",
@@ -20,6 +26,7 @@ function Signup() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     setForm({
       ...form,
       [name]: type === "checkbox" ? checked : value,
@@ -30,94 +37,186 @@ function Signup() {
     e.preventDefault();
 
     const validationErrors = validateSignup(form);
+
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
       registerUser(form);
+
       alert("Signup Successful!");
+
       navigate("/login");
     }
   };
 
-  return (
-    <div className="min-h-screen bg-[#0f1b5b] flex items-center justify-center px-4">
-      <div className="bg-gray-100 w-full max-w-md rounded-2xl p-6 shadow-lg">
+  const inputStyle = `
+    w-full p-3 rounded-lg outline-none transition border
+    bg-white dark:bg-zinc-800
+    text-black dark:text-white
+    border-gray-300 dark:border-zinc-600
+    placeholder-gray-400 dark:placeholder-gray-500
+    focus:ring-2 focus:ring-blue-500
+    focus:border-blue-500
+  `;
 
-        <h1 className="text-black font-bold text-center text-xl mb-4">
+  return (
+    <div
+      className={`
+        min-h-screen flex items-center justify-center px-4
+        ${theme.bg}
+      `}
+    >
+      <div
+        className={`
+          w-full max-w-md rounded-2xl p-6
+          ${theme.cardBg}
+          ${theme.border}
+          ${theme.shadowLg}
+        `}
+      >
+        {/* Logo */}
+        <h1
+          className={`
+            font-bold text-center text-xl mb-4
+            ${theme.textPrimary}
+          `}
+        >
           ZECPATH
         </h1>
 
         <Option />
 
-        <h2 className="text-xl font-bold mb-4 text-center">
+        {/* Title */}
+        <h2
+          className={`
+            text-xl font-bold mb-4 text-center
+            ${theme.textPrimary}
+          `}
+        >
           Create an account
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4"
+        >
+          {/* Name */}
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={form.name}
+              onChange={handleChange}
+              className={inputStyle}
+            />
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow"
-          />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.name}
+              </p>
+            )}
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow"
-          />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+          {/* Email */}
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              className={inputStyle}
+            />
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow"
-          />
-          {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email}
+              </p>
+            )}
+          </div>
 
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={form.confirmPassword}
-            onChange={handleChange}
-            className="w-full p-3 rounded-lg shadow"
-          />
-          {errors.confirmPassword && (
-            <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
-          )}
+          {/* Password */}
+          <div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              className={inputStyle}
+            />
 
-          <div className="flex items-center text-sm">
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password}
+              </p>
+            )}
+          </div>
+
+          {/* Confirm Password */}
+          <div>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={form.confirmPassword}
+              onChange={handleChange}
+              className={inputStyle}
+            />
+
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.confirmPassword}
+              </p>
+            )}
+          </div>
+
+          {/* Checkbox */}
+          <div
+            className={`
+              flex items-center text-sm
+              ${theme.textSecondary}
+            `}
+          >
             <input
               type="checkbox"
               name="agree"
               checked={form.agree}
               onChange={handleChange}
-              className="mr-2"
+              className="mr-2 accent-blue-600"
             />
+
             I agree to the Terms & Conditions
           </div>
-          {errors.agree && <p className="text-red-500 text-sm">{errors.agree}</p>}
 
+          {errors.agree && (
+            <p className="text-red-500 text-sm">
+              {errors.agree}
+            </p>
+          )}
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 text-white rounded-full font-semibold"
+            className="
+              w-full py-3 bg-blue-600 text-white
+              rounded-full font-semibold
+              hover:bg-blue-700 transition
+            "
           >
             Sign Up
           </button>
         </form>
 
-        <div className="text-center my-4 text-gray-500 text-sm">
+        {/* Divider */}
+        <div
+          className={`
+            text-center my-4 text-sm
+            ${theme.textMuted}
+          `}
+        >
           Or Continue With
         </div>
 

@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function PaymentMethod() {
+  const { theme } = useTheme();
+
   const [formData, setFormData] = useState({
     cardNumber: "",
     expiry: "",
@@ -18,11 +21,13 @@ export default function PaymentMethod() {
       newErrors.cardNumber = "Card number must be 10 digits";
     }
 
-// //     // Expiry Validation (MM/YY)
-// if (formData.expiry &&
-//   !/^(0[1-9]|1[0-2])\/[0-9]+$/.test(formData.expiry)) {
-//   newErrors.expiry = "Enter valid expiry date";
-// }
+    // Expiry Validation (MM/YY)
+    if (
+      formData.expiry &&
+      !/^(0[1-9]|1[0-2])\/([0-9]{2})$/.test(formData.expiry)
+    ) {
+      newErrors.expiry = "Enter valid expiry date";
+    }
 
     // CVV Validation
     if (!/^\d{3,4}$/.test(formData.cvv)) {
@@ -46,6 +51,14 @@ export default function PaymentMethod() {
     });
   };
 
+  const inputStyle = `
+    w-full rounded-lg p-3 outline-none transition
+    ${theme.cardBg}
+    ${theme.textPrimary}
+    ${theme.border}
+    focus:ring-2 focus:ring-purple-500
+  `;
+
   const handleSubmit = () => {
     if (validate()) {
       alert("Payment details valid ✅");
@@ -53,8 +66,18 @@ export default function PaymentMethod() {
   };
 
   return (
-    <div className="border rounded-xl p-5 space-y-4 border-purple-400">
-      <h3 className="font-semibold">Credit / Debit Card</h3>
+    <div
+      className={`
+        rounded-xl p-5 space-y-4
+        ${theme.cardBg}
+        ${theme.border}
+      `}
+    >
+      <h3
+        className={`font-semibold ${theme.textPrimary}`}
+      >
+        Credit / Debit Card
+      </h3>
 
       {/* Card Number */}
       <div>
@@ -64,8 +87,9 @@ export default function PaymentMethod() {
           placeholder="Card Number"
           value={formData.cardNumber}
           onChange={handleChange}
-          className="w-full border rounded-lg p-3"
+          className={inputStyle}
         />
+
         {errors.cardNumber && (
           <p className="text-red-500 text-sm mt-1">
             {errors.cardNumber}
@@ -77,14 +101,15 @@ export default function PaymentMethod() {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <input
-  type="text"
-  name="expiry"
-  placeholder="MM/YY"
-  value={formData.expiry}
-  onChange={handleChange}
-  onBlur={validate}
-  className="border rounded-lg p-3 w-full"
-/>
+            type="text"
+            name="expiry"
+            placeholder="MM/YY"
+            value={formData.expiry}
+            onChange={handleChange}
+            onBlur={validate}
+            className={inputStyle}
+          />
+
           {errors.expiry && (
             <p className="text-red-500 text-sm mt-1">
               {errors.expiry}
@@ -99,8 +124,9 @@ export default function PaymentMethod() {
             placeholder="CVV"
             value={formData.cvv}
             onChange={handleChange}
-            className="border rounded-lg p-3 w-full"
+            className={inputStyle}
           />
+
           {errors.cvv && (
             <p className="text-red-500 text-sm mt-1">
               {errors.cvv}
@@ -117,8 +143,9 @@ export default function PaymentMethod() {
           placeholder="Cardholder Name"
           value={formData.cardName}
           onChange={handleChange}
-          className="w-full border rounded-lg p-3"
+          className={inputStyle}
         />
+
         {errors.cardName && (
           <p className="text-red-500 text-sm mt-1">
             {errors.cardName}
@@ -129,7 +156,11 @@ export default function PaymentMethod() {
       {/* Validate Button */}
       <button
         onClick={handleSubmit}
-        className="w-full bg-purple-600 text-white py-3 rounded-lg"
+        className="
+          w-full bg-purple-600 text-white
+          py-3 rounded-lg font-medium
+          hover:bg-purple-700 transition
+        "
       >
         Validate Payment
       </button>
