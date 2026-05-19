@@ -49,31 +49,38 @@ function Signup() {
     }
   };
 
-  const inputStyle = `
-    w-full p-3 rounded-lg outline-none transition border
-    bg-white dark:bg-zinc-800
-    text-black dark:text-white
-    border-gray-300 dark:border-zinc-600
-    placeholder-gray-400 dark:placeholder-gray-500
-    focus:ring-2 focus:ring-blue-500
-    focus:border-blue-500
-  `;
+const inputStyle = `
+  w-full p-3 rounded-lg outline-none transition border
+
+  bg-gray-50 dark:bg-zinc-800
+  text-gray-900 dark:text-white
+
+  border-gray-300 dark:border-zinc-600
+  placeholder-gray-400 dark:placeholder-gray-500
+
+  hover:border-gray-400 dark:hover:border-zinc-500
+
+  focus:ring-2 focus:ring-blue-500
+  focus:border-blue-500
+
+  shadow-sm
+`;
 
   return (
     <div
       className={`
         min-h-screen flex items-center justify-center px-4
-        ${theme.bg}
+        bg-gray-100 dark:bg-zinc-950
       `}
     >
-      <div
-        className={`
-          w-full max-w-md rounded-2xl p-6
-          ${theme.cardBg}
-          ${theme.border}
-          ${theme.shadowLg}
-        `}
-      >
+     <div
+  className="
+    w-full max-w-md rounded-2xl p-6
+    bg-white dark:bg-zinc-900
+    border border-gray-200 dark:border-zinc-700
+    shadow-xl
+  "
+>
         {/* Logo */}
         <h1
           className={`
@@ -185,7 +192,11 @@ function Signup() {
               name="agree"
               checked={form.agree}
               onChange={handleChange}
-              className="mr-2 accent-blue-600"
+              className="
+                         mr-2 h-4 w-4
+                         accent-blue-600
+                         border-gray-300
+                        "
             />
 
             I agree to the Terms & Conditions

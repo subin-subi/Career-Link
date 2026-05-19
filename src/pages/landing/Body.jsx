@@ -1,5 +1,6 @@
 import Navbar from "./nav";
 import Footer from "./foot";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
@@ -19,9 +20,12 @@ export default function Landing() {
             Join 10,000+ professionals who found their dream jobs through Zecpath.
           </p>
 
-          <button className="bg-gray-200 text-[#145d82] font-semibold px-6 py-3 rounded-md hover:bg-white transition">
-            Create Free Profile
-          </button>
+         <Link
+  to="/login"
+  className="bg-gray-200 text-[#145d82] font-semibold px-6 py-3 rounded-md hover:bg-white transition inline-block"
+>
+  Create Free Profile
+</Link>
 
         </div>
       </div>

@@ -112,7 +112,7 @@ export const authService = {
         }
 
         throw new Error(
-          "Invalid credentials.\n\nTry:\nadmin@gmail.com / 123456\nemployer@gmail.com / 123456\nuser@gmail.com / 123456"
+          "Invalid credentials"
         );
       }
 

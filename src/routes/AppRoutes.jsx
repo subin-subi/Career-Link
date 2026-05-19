@@ -27,6 +27,7 @@ import ATSDashboard from "../pages/User/ATS/ATSDashboard";
 import PremiumPaymentPage from "../pages/Employee/payment/PremiumPaymentPage";
 import AdminProfile from "../pages/Profile/AdminProfile";
 import MyApplicationsPage from "../pages/User/Application/MyApplicationsPage";
+import ManageUsers from "../pages/Admin/UserManagement/ManageUsers";
 
 export default function AppRoutes() {
   return (
@@ -70,6 +71,7 @@ export default function AppRoutes() {
 
         <Route path="/admin/profile" element={<AdminProfile />} />    
         <Route path="/admin/dashboard" element={<EmployerDashboardPage/>}/>
+        <Route path="/admin/users" element={<ManageUsers/>}/>
 
 
       </Route>
