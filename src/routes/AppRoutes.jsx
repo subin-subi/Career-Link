@@ -1,15 +1,45 @@
 import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+
+
+
 
 import Login from "../pages/User/login/Login";
 import Signup from "../pages/User/signup/Signup";
-import Home from "../pages/Employee/home/Home";
-import JobsPage from "../pages/JobSearch/JobsPage";
-import NetworkPage from "../pages/Network/Network";
-import ProfileCenterPage from "../pages/Profile/ProfilePage";
-import EmployeeProfile from "../pages/Profile/EmployeeProfile";
-import Notifications from "../pages/User/Notifications/NotificationsPage";
-import Message from "../pages/User/chat/chat";
-import Settings from "../pages/User/Settings/Setting";
+
+
+// Lazy Loaded Pages
+const Home = lazy(() =>
+  import("../pages/Employee/home/Home")
+);
+
+const JobsPage = lazy(() =>
+  import("../pages/JobSearch/JobsPage")
+);
+
+const NetworkPage = lazy(() =>
+  import("../pages/Network/Network")
+);
+
+const ProfileCenterPage = lazy(() =>
+  import("../pages/Profile/ProfilePage")
+);
+
+const EmployeeProfile = lazy(() =>
+  import("../pages/Profile/EmployeeProfile")
+);
+
+const Notifications = lazy(() =>
+  import("../pages/User/Notifications/NotificationsPage")
+);
+
+const Message = lazy(() =>
+  import("../pages/User/chat/chat")
+);
+
+const Settings = lazy(() =>
+  import("../pages/User/Settings/Setting")
+);
 
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -31,51 +61,149 @@ import ManageUsers from "../pages/Admin/UserManagement/ManageUsers";
 
 export default function AppRoutes() {
   return (
-    <Routes>
+    <Suspense
+      fallback={
+        <div
+          className="
+          min-h-screen
+          flex items-center
+          justify-center
+          text-xl font-semibold
+          "
+        >
+          Loading...
+        </div>
+      }
+    >
 
-      {/* General Route */}
-      <Route path="/" element={<Landing />} />
+      <Routes>
 
-      {/* Auth Routes (Restricted when logged in) */}
-      <Route element={<PublicRoute />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Route>
+        {/* General Route */}
+        <Route
+          path="/"
+          element={<Landing />}
+        />
 
-      {/* Private Routes */}
-      <Route element={<PrivateRoute />}>
-        <Route path="/home" element={<Home />} />
-        <Route path="/job" element={<JobsPage />} />
-        <Route path="/job-apply" element={<JobDetails />} />
-        <Route path="/job-submit" element={<ApplyIntern />} />
-        <Route path="/profile" element={<ProfileCenterPage />} />
-        
-        <Route path="/network" element={<NetworkPage />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/chat" element={<Message />} />
-        <Route path="/settings" element={<Settings />} />
-       
-        <Route path="/candidate-form" element={<Jobs/>} />
-        <Route path="/profile-form" element={<CandidateProfile/>} />
-        <Route path="/ats" element={<ATSDashboard/>}/>
-        <Route path="/pay" element={<PremiumPaymentPage/>}/>
+        {/* Public Routes */}
+        <Route element={<PublicRoute />}>
+          <Route
+            path="/login"
+            element={<Login />}
+          />
 
+          <Route
+            path="/signup"
+            element={<Signup />}
+          />
+        </Route>
 
-        <Route path="/dashboard" element={<CandidateDashboard />} />
-        <Route path="/applications" element={<MyApplicationsPage />} />
+        {/* Private Routes */}
+        <Route element={<PrivateRoute />}>
 
+          <Route
+            path="/home"
+            element={<Home />}
+          />
 
-        <Route path="/employer/dashboard" element={<CandidateDashboard />} />
-        <Route path="/employer/profile" element={<EmployeeProfile />} />    
+          <Route
+            path="/job"
+            element={<JobsPage />}
+          />
 
+          <Route
+            path="/job-apply"
+            element={<JobDetails />}
+          />
 
-        <Route path="/admin/profile" element={<AdminProfile />} />    
-        <Route path="/admin/dashboard" element={<EmployerDashboardPage/>}/>
-        <Route path="/admin/users" element={<ManageUsers/>}/>
+          <Route
+            path="/job-submit"
+            element={<ApplyIntern />}
+          />
 
+          <Route
+            path="/profile"
+            element={<ProfileCenterPage />}
+          />
 
-      </Route>
+          <Route
+            path="/network"
+            element={<NetworkPage />}
+          />
 
-    </Routes>
+          <Route
+            path="/notifications"
+            element={<Notifications />}
+          />
+
+          <Route
+            path="/chat"
+            element={<Message />}
+          />
+
+          <Route
+            path="/settings"
+            element={<Settings />}
+          />
+
+          <Route
+            path="/candidate-form"
+            element={<Jobs />}
+          />
+
+          <Route
+            path="/profile-form"
+            element={<CandidateProfile />}
+          />
+
+          <Route
+            path="/ats"
+            element={<ATSDashboard />}
+          />
+
+          <Route
+            path="/pay"
+            element={<PremiumPaymentPage />}
+          />
+
+          <Route
+            path="/dashboard"
+            element={<CandidateDashboard />}
+          />
+
+          <Route
+            path="/applications"
+            element={<MyApplicationsPage />}
+          />
+
+          <Route
+            path="/employer/dashboard"
+            element={<CandidateDashboard />}
+          />
+
+          <Route
+            path="/employer/profile"
+            element={<EmployeeProfile />}
+          />
+
+          <Route
+            path="/admin/profile"
+            element={<AdminProfile />}
+          />
+
+          <Route
+            path="/admin/dashboard"
+            element={<EmployerDashboardPage />}
+          />
+
+          <Route
+            path="/admin/users"
+            element={<ManageUsers />}
+          />
+
+        </Route>
+
+      </Routes>
+
+    </Suspense>
   );
 }

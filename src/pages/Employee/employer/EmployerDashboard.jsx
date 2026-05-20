@@ -5,7 +5,8 @@ import RecentApplicationsTable from "../../../components/employerDashboard/Recen
 import Navbar from "../../../components/Navbar/Navbar";
 import ProfileSidebar from "../../../components/Profile/ProfileSidebar";
 import BottomNav from "../../JobSearch/BottomNav";
-
+import AdminAnalyticsCard from "./AdminAnalyticsCard"
+import JobManagementCard from "./JobManagement"
 export default function EmployerDashboardPage() {
   return (
     <>
@@ -28,6 +29,8 @@ export default function EmployerDashboardPage() {
               <div className="col-span-1 lg:col-span-9 space-y-6">
                 <WelcomeBanner />
                 <StatsGrid />
+                <AdminAnalyticsCard/>
+                <JobManagementCard/>
                 <RecentApplicationsTable />
               </div>
 
