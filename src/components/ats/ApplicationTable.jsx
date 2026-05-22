@@ -3,9 +3,12 @@ import { applications as initialData } from "../../data/applications";
 import StatusBadge from "./StatusBadge";
 import ActionButtons from "./ActionButtons";
 import Filters from "./Filters";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function ApplicationTable() {
   const [data, setData] = useState(initialData);
+
+  const { theme } = useTheme();
 
   const updateStatus = (id, status) => {
     setData((prev) =>
@@ -16,71 +19,307 @@ export default function ApplicationTable() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow border">
-      <h2 className="text-lg font-semibold mb-4">Applications</h2>
+    <div
+      className={`
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.shadowMd}
+        border
+        rounded-2xl
+        p-6
+        transition-all
+        duration-300
+      `}
+    >
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <div>
+          <h2
+            className={`
+              text-2xl
+              font-bold
+              ${theme.textPrimary}
+            `}
+          >
+            Applications
+          </h2>
 
-      <Filters />
+          <p
+            className={`
+              text-sm
+              mt-1
+              ${theme.textMuted}
+            `}
+          >
+            Manage and review candidate applications
+          </p>
+        </div>
 
-      {/* 🔹 Desktop Table */}
-      <div className="hidden md:block overflow-x-auto">
-       <table className="w-full text-sm min-w-[600px]">
-  <thead>
-    <tr className="text-gray-500 border-b">
-      <th className="py-2 text-left font-semibold">Name</th>
-      <th className="text-left font-semibold">Position</th>
-      <th className="font-semibold">Status</th>
-      <th className="text-left font-semibold">Actions</th>
-    </tr>
-  </thead>
-
- <tbody className="text-gray-800 font-medium">
-  {data.map((app) => (
-    <tr key={app.id} className="border-b hover:bg-gray-50">
-      <td className="py-3 font-semibold text-gray-900">
-        {app.name}
-      </td>
-
-      <td className="font-medium text-gray-800">
-        {app.role}
-      </td>
-
-      <td>
-        <StatusBadge status={app.status} />
-      </td>
-
-      <td>
-        <ActionButtons
-          onShortlist={() =>
-            updateStatus(app.id, "Shortlisted")
-          }
-          onReject={() =>
-            updateStatus(app.id, "Rejected")
-          }
-        />
-      </td>
-    </tr>
-  ))}
-</tbody>
-</table>
+        <div
+          className={`
+            px-4
+            py-2
+            rounded-xl
+            text-sm
+            font-medium
+            ${theme.infoBg}
+            ${theme.infoText}
+          `}
+        >
+          Total: {data.length} Applications
+        </div>
       </div>
 
-      {/* 🔹 Mobile Card Layout */}
+      {/* Filters */}
+      <div className="mb-6">
+        <Filters />
+      </div>
+
+      {/* Desktop Table */}
+      <div
+        className={`
+          hidden
+          md:block
+          overflow-hidden
+          rounded-2xl
+          border
+          ${theme.border}
+        `}
+      >
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[700px]">
+            <thead
+              className={`
+                ${theme.bg}
+                border-b
+                ${theme.border}
+              `}
+            >
+              <tr>
+                <th
+                  className={`
+                    py-4
+                    px-6
+                    text-left
+                    font-semibold
+                    ${theme.textSecondary}
+                  `}
+                >
+                  Candidate
+                </th>
+
+                <th
+                  className={`
+                    px-6
+                    text-left
+                    font-semibold
+                    ${theme.textSecondary}
+                  `}
+                >
+                  Position
+                </th>
+
+                <th
+                  className={`
+                    px-6
+                    text-center
+                    font-semibold
+                    ${theme.textSecondary}
+                  `}
+                >
+                  Status
+                </th>
+
+                <th
+                  className={`
+                    px-6
+                    text-left
+                    font-semibold
+                    ${theme.textSecondary}
+                  `}
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {data.map((app, index) => (
+                <tr
+                  key={app.id}
+                  className={`
+                    border-b
+                    ${theme.border}
+                    ${theme.hover}
+                    transition-all
+                    duration-200
+                  `}
+                >
+                  {/* Candidate */}
+                  <td className="px-6 py-5">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`
+                          h-11
+                          w-11
+                          rounded-full
+                          flex
+                          items-center
+                          justify-center
+                          text-sm
+                          font-bold
+                          ${theme.profilePrimary}
+                          ${theme.primaryText}
+                        `}
+                      >
+                        {app.name.charAt(0)}
+                      </div>
+
+                      <div>
+                        <h3
+                          className={`
+                            font-semibold
+                            ${theme.textPrimary}
+                          `}
+                        >
+                          {app.name}
+                        </h3>
+
+                        <p
+                          className={`
+                            text-xs
+                            mt-1
+                            ${theme.textMuted}
+                          `}
+                        >
+                          Candidate #{index + 1}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+
+                  {/* Position */}
+                  <td
+                    className={`
+                      px-6
+                      font-medium
+                      ${theme.textPrimary}
+                    `}
+                  >
+                    {app.role}
+                  </td>
+
+                  {/* Status */}
+                  <td className="px-6 text-center">
+                    <StatusBadge status={app.status} />
+                  </td>
+
+                  {/* Actions */}
+                  <td className="px-6">
+                    <ActionButtons
+                      onShortlist={() =>
+                        updateStatus(app.id, "Shortlisted")
+                      }
+                      onReject={() =>
+                        updateStatus(app.id, "Rejected")
+                      }
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Mobile Cards */}
       <div className="md:hidden space-y-4">
-        {data.map((app) => (
+        {data.map((app, index) => (
           <div
             key={app.id}
-            className="border rounded-lg p-3 shadow-sm"
+            className={`
+              border
+              rounded-2xl
+              p-4
+              ${theme.cardBg}
+              ${theme.border}
+              ${theme.shadow}
+            `}
           >
-            <div className="flex justify-between items-center">
-              <h3 className="font-medium">{app.name}</h3>
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`
+                    h-12
+                    w-12
+                    rounded-full
+                    flex
+                    items-center
+                    justify-center
+                    font-bold
+                    ${theme.profilePrimary}
+                    ${theme.primaryText}
+                  `}
+                >
+                  {app.name.charAt(0)}
+                </div>
+
+                <div>
+                  <h3
+                    className={`
+                      font-semibold
+                      ${theme.textPrimary}
+                    `}
+                  >
+                    {app.name}
+                  </h3>
+
+                  <p
+                    className={`
+                      text-sm
+                      mt-1
+                      ${theme.textMuted}
+                    `}
+                  >
+                    Candidate #{index + 1}
+                  </p>
+                </div>
+              </div>
+
               <StatusBadge status={app.status} />
             </div>
 
-            <p className="text-sm text-gray-500 mt-1">
-              {app.role}
-            </p>
+            <div
+              className={`
+                mt-4
+                p-3
+                rounded-xl
+                ${theme.bg}
+              `}
+            >
+              <p
+                className={`
+                  text-xs
+                  uppercase
+                  tracking-wide
+                  ${theme.textMuted}
+                `}
+              >
+                Applied Position
+              </p>
 
-            <div className="mt-3">
+              <p
+                className={`
+                  mt-1
+                  font-medium
+                  ${theme.textPrimary}
+                `}
+              >
+                {app.role}
+              </p>
+            </div>
+
+            <div className="mt-4">
               <ActionButtons
                 onShortlist={() =>
                   updateStatus(app.id, "Shortlisted")
@@ -94,11 +333,62 @@ export default function ApplicationTable() {
         ))}
       </div>
 
-      {/* 🔹 Pagination */}
-      <div className="flex justify-center items-center gap-4 mt-4 text-sm text-gray-500">
-        <span className="cursor-pointer">‹</span>
-        <span>Page 1 of 15</span>
-        <span className="text-blue-500 cursor-pointer">Next ›</span>
+      {/* Pagination */}
+      <div
+        className={`
+          flex
+          items-center
+          justify-between
+          mt-6
+          pt-4
+          border-t
+          ${theme.border}
+        `}
+      >
+        <button
+          className={`
+            px-4
+            py-2
+            rounded-xl
+            text-sm
+            font-medium
+            border
+            transition-all
+            duration-200
+            ${theme.border}
+            ${theme.textSecondary}
+            ${theme.hover}
+          `}
+        >
+          ← Previous
+        </button>
+
+        <div
+          className={`
+            text-sm
+            font-medium
+            ${theme.textMuted}
+          `}
+        >
+          Page 1 of 15
+        </div>
+
+        <button
+          className={`
+            px-4
+            py-2
+            rounded-xl
+            text-sm
+            font-medium
+            text-white
+            transition-all
+            duration-200
+            ${theme.primary}
+            ${theme.primaryHover}
+          `}
+        >
+          Next →
+        </button>
       </div>
     </div>
   );

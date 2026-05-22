@@ -6,7 +6,7 @@ import { lazy, Suspense } from "react";
 
 import Login from "../pages/User/login/Login";
 import Signup from "../pages/User/signup/Signup";
-
+import ErrorPage from "../components/ui/ErrorMessage";
 
 // Lazy Loaded Pages
 const Home = lazy(() =>
@@ -59,6 +59,11 @@ import AdminProfile from "../pages/Profile/AdminProfile";
 import MyApplicationsPage from "../pages/User/Application/MyApplicationsPage";
 import ManageUsers from "../pages/Admin/UserManagement/ManageUsers";
 
+import ErrorMessage from "../components/ui/ErrorMessage";
+import EmployerJobsPage from "../pages/Employee/EmployerJobs/EmployerJobsPage";
+import LandingPage from "../pages/landing/Body";
+import AIInsightsDashboard from "../pages/Admin/Report/AiDashboard";
+
 export default function AppRoutes() {
   return (
     <Suspense
@@ -81,7 +86,7 @@ export default function AppRoutes() {
         {/* General Route */}
         <Route
           path="/"
-          element={<Landing />}
+          element={<LandingPage />}
         />
 
         {/* Public Routes */}
@@ -155,10 +160,7 @@ export default function AppRoutes() {
             element={<CandidateProfile />}
           />
 
-          <Route
-            path="/ats"
-            element={<ATSDashboard />}
-          />
+          
 
           <Route
             path="/pay"
@@ -186,6 +188,17 @@ export default function AppRoutes() {
           />
 
           <Route
+            path="/employer/applicants"
+            element={<ATSDashboard />}
+          />
+          <Route
+            path="/employer/jobs"
+            element={<EmployerJobsPage/>}
+          />
+
+
+
+          <Route
             path="/admin/profile"
             element={<AdminProfile />}
           />
@@ -199,8 +212,14 @@ export default function AppRoutes() {
             path="/admin/users"
             element={<ManageUsers />}
           />
+          <Route
+            path="/admin/reports"
+            element={<AIInsightsDashboard/>}
+          />
 
         </Route>
+
+         <Route path="*" element={<ErrorPage/>} />
 
       </Routes>
 

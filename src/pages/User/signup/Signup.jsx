@@ -49,71 +49,144 @@ function Signup() {
     }
   };
 
-const inputStyle = `
-  w-full p-3 rounded-lg outline-none transition border
+  /* ================= INPUT STYLE ================= */
 
-  bg-gray-50 dark:bg-zinc-800
-  text-gray-900 dark:text-white
+  const inputStyle = `
+    w-full
+    p-3
+    rounded-xl
+    outline-none
+    transition-all
+    duration-200
+    border
 
-  border-gray-300 dark:border-zinc-600
-  placeholder-gray-400 dark:placeholder-gray-500
+    bg-white
+    dark:bg-zinc-800
 
-  hover:border-gray-400 dark:hover:border-zinc-500
+    text-black
+    dark:text-white
 
-  focus:ring-2 focus:ring-blue-500
-  focus:border-blue-500
+    border-gray-300
+    dark:border-zinc-600
 
-  shadow-sm
-`;
+    placeholder:text-gray-500
+    dark:placeholder:text-gray-400
+
+    hover:border-gray-400
+    dark:hover:border-zinc-500
+
+    focus:ring-2
+    focus:ring-blue-500
+    focus:border-blue-500
+
+    shadow-sm
+  `;
 
   return (
     <div
       className={`
-        min-h-screen flex items-center justify-center px-4
-        bg-gray-100 dark:bg-zinc-950
+        min-h-screen
+        flex
+        items-center
+        justify-center
+        px-4
+        py-10
+        transition-all
+        duration-300
+        ${theme.bg}
       `}
     >
-     <div
-  className="
-    w-full max-w-md rounded-2xl p-6
-    bg-white dark:bg-zinc-900
-    border border-gray-200 dark:border-zinc-700
-    shadow-xl
-  "
->
-        {/* Logo */}
-        <h1
-          className={`
-            font-bold text-center text-xl mb-4
-            ${theme.textPrimary}
-          `}
-        >
-          ZECPATH
-        </h1>
+      {/* CARD */}
+      <div
+        className={`
+          w-full
+          max-w-md
+          rounded-3xl
+          p-6
+          sm:p-8
+          border
+          transition-all
+          duration-300
+          ${theme.cardBg}
+          ${theme.border}
+          ${theme.shadowMd}
+        `}
+      >
+        {/* LOGO */}
+        <div className="text-center mb-6">
+          
+          <h1
+            className={`
+              text-3xl
+              font-extrabold
+              tracking-wide
+              ${theme.primaryText}
+            `}
+          >
+            ZECPATH
+          </h1>
 
+          <p
+            className={`
+              text-sm
+              mt-2
+              ${theme.textMuted}
+            `}
+          >
+            AI Powered Hiring Platform
+          </p>
+        </div>
+
+        {/* OPTION */}
         <Option />
 
-        {/* Title */}
-        <h2
-          className={`
-            text-xl font-bold mb-4 text-center
-            ${theme.textPrimary}
-          `}
-        >
-          Create an account
-        </h2>
+        {/* TITLE */}
+        <div className="text-center mb-6">
+          
+          <h2
+            className={`
+              text-2xl
+              font-bold
+              ${theme.textPrimary}
+            `}
+          >
+            Create an Account
+          </h2>
 
-        {/* Form */}
+          <p
+            className={`
+              mt-2
+              text-sm
+              ${theme.textMuted}
+            `}
+          >
+            Join the platform and start your journey
+          </p>
+        </div>
+
+        {/* FORM */}
         <form
           onSubmit={handleSubmit}
-          className="space-y-4"
+          className="space-y-5"
         >
-          {/* Name */}
+          {/* NAME */}
           <div>
+            <label
+              className={`
+                block
+                mb-2
+                text-sm
+                font-medium
+                ${theme.textSecondary}
+              `}
+            >
+              Full Name
+            </label>
+
             <input
               type="text"
               name="name"
-              placeholder="Full Name"
+              placeholder="Enter your full name"
               value={form.name}
               onChange={handleChange}
               className={inputStyle}
@@ -126,12 +199,24 @@ const inputStyle = `
             )}
           </div>
 
-          {/* Email */}
+          {/* EMAIL */}
           <div>
+            <label
+              className={`
+                block
+                mb-2
+                text-sm
+                font-medium
+                ${theme.textSecondary}
+              `}
+            >
+              Email Address
+            </label>
+
             <input
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="Enter your email"
               value={form.email}
               onChange={handleChange}
               className={inputStyle}
@@ -144,12 +229,24 @@ const inputStyle = `
             )}
           </div>
 
-          {/* Password */}
+          {/* PASSWORD */}
           <div>
+            <label
+              className={`
+                block
+                mb-2
+                text-sm
+                font-medium
+                ${theme.textSecondary}
+              `}
+            >
+              Password
+            </label>
+
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Create password"
               value={form.password}
               onChange={handleChange}
               className={inputStyle}
@@ -162,12 +259,24 @@ const inputStyle = `
             )}
           </div>
 
-          {/* Confirm Password */}
+          {/* CONFIRM PASSWORD */}
           <div>
+            <label
+              className={`
+                block
+                mb-2
+                text-sm
+                font-medium
+                ${theme.textSecondary}
+              `}
+            >
+              Confirm Password
+            </label>
+
             <input
               type="password"
               name="confirmPassword"
-              placeholder="Confirm Password"
+              placeholder="Confirm password"
               value={form.confirmPassword}
               onChange={handleChange}
               className={inputStyle}
@@ -180,58 +289,108 @@ const inputStyle = `
             )}
           </div>
 
-          {/* Checkbox */}
-          <div
-            className={`
-              flex items-center text-sm
-              ${theme.textSecondary}
-            `}
-          >
-            <input
-              type="checkbox"
-              name="agree"
-              checked={form.agree}
-              onChange={handleChange}
-              className="
-                         mr-2 h-4 w-4
-                         accent-blue-600
-                         border-gray-300
-                        "
-            />
+          {/* CHECKBOX */}
+          <div>
+            <label
+              className={`
+                flex
+                items-center
+                gap-3
+                text-sm
+                cursor-pointer
+                ${theme.textSecondary}
+              `}
+            >
+              <input
+                type="checkbox"
+                name="agree"
+                checked={form.agree}
+                onChange={handleChange}
+                className="
+                  h-4
+                  w-4
+                  accent-blue-600
+                  rounded
+                "
+              />
 
-            I agree to the Terms & Conditions
+              I agree to the Terms & Conditions
+            </label>
+
+            {errors.agree && (
+              <p className="text-red-500 text-sm mt-2">
+                {errors.agree}
+              </p>
+            )}
           </div>
 
-          {errors.agree && (
-            <p className="text-red-500 text-sm">
-              {errors.agree}
-            </p>
-          )}
-
-          {/* Submit Button */}
+          {/* BUTTON */}
           <button
             type="submit"
             className="
-              w-full py-3 bg-blue-600 text-white
-              rounded-full font-semibold
-              hover:bg-blue-700 transition
+              w-full
+              py-3.5
+              rounded-xl
+              bg-blue-600
+              hover:bg-blue-700
+              text-white
+              font-semibold
+              transition-all
+              duration-200
+              shadow-md
+              hover:shadow-lg
             "
           >
             Sign Up
           </button>
         </form>
 
-        {/* Divider */}
-        <div
-          className={`
-            text-center my-4 text-sm
-            ${theme.textMuted}
-          `}
-        >
-          Or Continue With
+        {/* DIVIDER */}
+        <div className="relative my-6">
+          
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300 dark:border-zinc-700"></div>
+          </div>
+
+          <div className="relative flex justify-center text-sm">
+            <span
+              className={`
+                px-4
+                ${theme.cardBg}
+                ${theme.textMuted}
+              `}
+            >
+              Or Continue With
+            </span>
+          </div>
         </div>
 
+        {/* GOOGLE BUTTON */}
         <GoogleButton />
+
+        {/* LOGIN */}
+        <p
+          className={`
+            text-center
+            text-sm
+            mt-6
+            ${theme.textSecondary}
+          `}
+        >
+          Already have an account?{" "}
+
+          <span
+            onClick={() => navigate("/login")}
+            className="
+              text-blue-600
+              hover:text-blue-700
+              font-semibold
+              cursor-pointer
+            "
+          >
+            Login
+          </span>
+        </p>
       </div>
     </div>
   );
