@@ -2,7 +2,10 @@ import AppRouter from "./routes/AppRoutes";
 import { Toaster } from "react-hot-toast";
 import { useTheme } from "./context/ThemeContext";
 
-function App() {
+import { Provider } from "react-redux";
+import { store } from "../src/redux/store";
+
+function AppContent() {
   const { theme } = useTheme();
 
   return (
@@ -10,6 +13,14 @@ function App() {
       <Toaster position="top-right" />
       <AppRouter />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Provider store={store}>
+      <AppContent />
+    </Provider>
   );
 }
 

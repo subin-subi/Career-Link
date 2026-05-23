@@ -7,6 +7,7 @@ import ProfileSidebar from "../../../components/Profile/ProfileSidebar";
 import BottomNav from "../../JobSearch/BottomNav";
 import AdminAnalyticsCard from "./AdminAnalyticsCard"
 import JobManagementCard from "./JobManagement"
+import JobsChart from "../../Admin/chart/Chart"
 export default function EmployerDashboardPage() {
   return (
     <>
@@ -28,6 +29,7 @@ export default function EmployerDashboardPage() {
               {/* MAIN CONTENT */}
               <div className="col-span-1 lg:col-span-9 space-y-6">
                 <WelcomeBanner />
+                <JobsChart/>
                 <StatsGrid />
                 <AdminAnalyticsCard/>
                 <JobManagementCard/>
