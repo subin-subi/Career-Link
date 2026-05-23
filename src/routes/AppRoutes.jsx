@@ -63,6 +63,7 @@ import ErrorMessage from "../components/ui/ErrorMessage";
 import EmployerJobsPage from "../pages/Employee/EmployerJobs/EmployerJobsPage";
 import LandingPage from "../pages/landing/Body";
 import AIInsightsDashboard from "../pages/Admin/Report/AiDashboard";
+import InterviewSchedulerPage from "../pages/Employee/InterviewSchedulerPage";
 
 export default function AppRoutes() {
   return (
@@ -220,6 +221,7 @@ export default function AppRoutes() {
         </Route>
 
          <Route path="*" element={<ErrorPage/>} />
+         <Route path="/ab" element={<InterviewSchedulerPage/>} />
 
       </Routes>
 
