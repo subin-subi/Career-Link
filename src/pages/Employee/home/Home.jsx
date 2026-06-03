@@ -9,7 +9,7 @@ export default function Home() {
   const { theme } = useTheme();
 
   return (
-    <div className={`min-h-screen ${theme.bg} ${theme.textPrimary} pt-28 transition-all duration-300`}>
+    <div className={`min-h-screen ${theme.bg} ${theme.textPrimary} pt-30 transition-all duration-300`}>
       
       {/* Navbar */}
       <Navbar />

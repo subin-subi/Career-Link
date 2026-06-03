@@ -5,6 +5,8 @@ import { useTheme } from "./context/ThemeContext";
 import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
 
+import { SocketProvider } from "./context/SocketContext";
+
 function AppContent() {
   const { theme } = useTheme();
 
@@ -19,7 +21,9 @@ function AppContent() {
 function App() {
   return (
     <Provider store={store}>
-      <AppContent />
+      <SocketProvider>
+        <AppContent />
+      </SocketProvider>
     </Provider>
   );
 }
