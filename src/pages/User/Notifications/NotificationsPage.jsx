@@ -41,7 +41,7 @@ export default function NotificationCenter() {
       <div
         className="
         max-w-6xl mx-auto
-        pt-26 flex gap-6 px-4
+        pt-30 flex gap-6 px-4
         "
       >
 

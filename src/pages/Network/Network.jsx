@@ -17,7 +17,7 @@ export default function NetworkPage() {
     >
       <Navbar />
 
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 px-4">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 px-4 pt-10">
 
         {/* LEFT SIDEBAR */}
         <div className="lg:w-72 w-full space-y-4">

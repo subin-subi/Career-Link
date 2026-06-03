@@ -14,7 +14,7 @@ export default function EmployerDashboardPage() {
       <DashboardLayout>
         <Navbar />
 
-        <div className="pt-24 pb-24">
+        <div className="pt-30 pb-24">
           <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

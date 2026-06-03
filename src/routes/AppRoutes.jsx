@@ -64,6 +64,7 @@ import EmployerJobsPage from "../pages/Employee/EmployerJobs/EmployerJobsPage";
 import LandingPage from "../pages/landing/Body";
 import AIInsightsDashboard from "../pages/Admin/Report/AiDashboard";
 import InterviewSchedulerPage from "../pages/Employee/InterviewSchedulerPage";
+import InterviewRoom from "../pages/Admin/InterView/InterviewRoom";
 
 export default function AppRoutes() {
   return (
@@ -177,6 +178,15 @@ export default function AppRoutes() {
             path="/applications"
             element={<MyApplicationsPage />}
           />
+          <Route
+            path="/interview"
+            element={<InterviewRoom />}
+          />
+
+
+
+
+
 
           <Route
             path="/employer/dashboard"

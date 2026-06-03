@@ -10,7 +10,7 @@ export default function Settings() {
     <div className={`min-h-screen ${theme.bg} ${theme.textPrimary}`}>
       <Navbar />
 
-      <div className="px-6 py-10 pt-24">
+      <div className="px-6 py-10 pt-30">
         <div className="max-w-4xl mx-auto">
 
           <h1 className="text-3xl font-bold">Settings</h1>

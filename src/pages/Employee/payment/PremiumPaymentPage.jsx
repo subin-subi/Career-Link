@@ -18,7 +18,7 @@ function PremiumPaymentPage() {
       <Navbar />
 
       {/* Page Content */}
-      <div className="pt-24 pb-24 px-4">
+      <div className="pt-30 pb-24 px-4">
         <div
           className={`
             max-w-5xl mx-auto

@@ -85,7 +85,7 @@ export default function JobsPage() {
    <div className={`min-h-screen ${theme.bg} ${theme.textPrimary} pb-24`}>
       <Navbar />
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 pt-24 sm:pt-28">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 pt-24 sm:pt-30">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
 
           {/* LEFT SIDEBAR */}
