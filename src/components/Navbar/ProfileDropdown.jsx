@@ -9,6 +9,7 @@ import {
   FiFileText,
   FiUsers,
   FiLogOut,
+  FiPlusCircle 
 } from "react-icons/fi";
 
 import { useTheme } from "../../context/ThemeContext";
@@ -222,7 +223,7 @@ function ProfileDropdown() {
 
                 <DropdownItem
                   to="/employer/jobs"
-                  icon={<FiBriefcase size={18} />}
+                  icon={<FiPlusCircle  size={18} />}
                   label="Post Jobs"
                   theme={theme}
                 />
@@ -238,6 +239,12 @@ function ProfileDropdown() {
                   to="/employer/profile"
                   icon={<FiUser size={18} />}
                   label="Company Profile"
+                  theme={theme}
+                />
+                <DropdownItem
+                  to="/employer/report"
+                  icon={<FiFileText size={18} />}
+                  label="Reports"
                   theme={theme}
                 />
               </>

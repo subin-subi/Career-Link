@@ -66,6 +66,7 @@ import AIInsightsDashboard from "../pages/Admin/Report/AiDashboard";
 import InterviewSchedulerPage from "../pages/Employee/InterviewSchedulerPage";
 import InterviewRoom from "../pages/Admin/InterView/InterviewRoom";
 import InterviewInstructions from "../pages/Admin/InterviewInstructions/InterviewInstructions";
+import RecruiterDashboard from "../pages/Employee/RecruiterDashboard/RecruiterActions";
 
 export default function AppRoutes() {
   return (
@@ -170,6 +171,7 @@ export default function AppRoutes() {
             element={<PremiumPaymentPage />}
           />
 
+
           <Route
             path="/dashboard"
             element={<CandidateDashboard />}
@@ -211,7 +213,11 @@ export default function AppRoutes() {
             path="/employer/jobs"
             element={<EmployerJobsPage/>}
           />
-
+           
+             <Route
+            path="/employer/report"
+            element={<RecruiterDashboard/>}
+          />
 
 
           <Route
