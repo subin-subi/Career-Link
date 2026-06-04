@@ -65,6 +65,7 @@ import LandingPage from "../pages/landing/Body";
 import AIInsightsDashboard from "../pages/Admin/Report/AiDashboard";
 import InterviewSchedulerPage from "../pages/Employee/InterviewSchedulerPage";
 import InterviewRoom from "../pages/Admin/InterView/InterviewRoom";
+import InterviewInstructions from "../pages/Admin/InterviewInstructions/InterviewInstructions";
 
 export default function AppRoutes() {
   return (
@@ -181,6 +182,10 @@ export default function AppRoutes() {
           <Route
             path="/interview"
             element={<InterviewRoom />}
+          />
+          <Route
+            path="/interviewInstruction"
+            element={<InterviewInstructions/>}
           />
 
 
