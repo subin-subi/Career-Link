@@ -67,6 +67,7 @@ import InterviewSchedulerPage from "../pages/Employee/InterviewSchedulerPage";
 import InterviewRoom from "../pages/Admin/InterView/InterviewRoom";
 import InterviewInstructions from "../pages/Admin/InterviewInstructions/InterviewInstructions";
 import RecruiterDashboard from "../pages/Employee/RecruiterDashboard/RecruiterActions";
+import CodingAssessment from "../pages/Employee/CodeEditor/CodeEditor";
 
 export default function AppRoutes() {
   return (
@@ -188,6 +189,10 @@ export default function AppRoutes() {
           <Route
             path="/interviewInstruction"
             element={<InterviewInstructions/>}
+          />
+          <Route
+            path="/cd"
+            element={<CodingAssessment/>}
           />
 
 

@@ -1,7 +1,10 @@
 import Navbar from "../../../components/Navbar/Navbar";
 import BottomNav from "../../JobSearch/BottomNav";
-
+import { useNavigate } from "react-router-dom";
 export default function PremiumEmployerDashboard() {
+
+const navigate = useNavigate();
+
   const theme = {
     bg: "bg-gray-50 dark:bg-[#0f172a]",
     cardBg: "bg-white dark:bg-[#1e293b]",
@@ -169,64 +172,47 @@ export default function PremiumEmployerDashboard() {
           ))}
         </div>
 
-        {/* AI SCORE */}
-        <div
-          className={`rounded-3xl p-6 lg:p-8 ${theme.cardBg} ${theme.border} ${theme.shadowLg}`}
-        >
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+         {/* RECOMMENDED */}
+          <div
+            className={`rounded-3xl p-6 ${theme.cardBg} ${theme.border} ${theme.shadowLg}`}
+          >
+            <h2 className="text-2xl font-bold">
+              Recommended
+            </h2>
 
-            <div className="flex items-center gap-6">
-              {/* Circular Score */}
-              <div className="relative w-32 h-32">
-                <div className="absolute inset-0 rounded-full border-[10px] border-green-500/20" />
+            <p className={`${theme.textMuted} mt-1`}>
+              Based on your profile
+            </p>
 
-                <div className="absolute inset-0 rounded-full border-[10px] border-transparent border-t-green-500 border-r-green-500 rotate-45" />
+            <div className="mt-6 space-y-4">
+              {recommendedJobs.map((job, index) => (
+                <div
+                  key={index}
+                  className={`p-5 rounded-2xl ${theme.border} hover:shadow-lg transition-all duration-300`}
+                >
+                  <h3 className="font-bold text-lg">
+                    {job.title}
+                  </h3>
 
-                <div className="absolute inset-0 flex items-center justify-center text-4xl font-black text-green-500">
-                  78
+                  <p className={`${theme.textMuted} mt-1`}>
+                    {job.company}
+                  </p>
+
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-green-500 font-semibold">
+                      {job.salary}
+                    </span>
+
+                    <button className="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium transition-all duration-300">
+                      Apply
+                    </button>
+                  </div>
                 </div>
-              </div>
-
-              <div>
-                <h2 className="text-2xl lg:text-3xl font-bold flex items-center gap-2">
-                  🤖 Your AI Score
-                </h2>
-
-                <p className={`${theme.textMuted} mt-2`}>
-                  AI-generated profile strength analysis
-                </p>
-
-                <div className="mt-4 space-y-3 w-full lg:w-[500px]">
-                  {[
-                    { label: "Technical Skills", value: 85, color: "bg-green-500" },
-                    { label: "Communication", value: 72, color: "bg-orange-500" },
-                    { label: "Profile Completeness", value: 90, color: "bg-cyan-500" },
-                  ].map((bar, index) => (
-                    <div key={index}>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className={theme.textSecondary}>{bar.label}</span>
-                        <span className="font-semibold">{bar.value}</span>
-                      </div>
-
-                      <div className="w-full h-3 rounded-full bg-gray-200 dark:bg-slate-700 overflow-hidden">
-                        <div
-                          className={`${bar.color} h-full rounded-full`}
-                          style={{ width: `${bar.value}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
-
-            <button
-              className={`px-5 py-3 rounded-xl ${theme.border} ${theme.cardBg} hover:bg-violet-600 hover:text-white transition-all duration-300 font-semibold`}
-            >
-              Full Insights →
-            </button>
           </div>
-        </div>
+
+   
 
         {/* BOTTOM SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -275,45 +261,60 @@ export default function PremiumEmployerDashboard() {
             </div>
           </div>
 
-          {/* RECOMMENDED */}
-          <div
-            className={`rounded-3xl p-6 ${theme.cardBg} ${theme.border} ${theme.shadowLg}`}
-          >
-            <h2 className="text-2xl font-bold">
-              Recommended
-            </h2>
+              {/* AI SCORE */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+  {/* Left Side */}
+  <div>
+    {/* Your existing Premium Features section */}
+  </div>
 
-            <p className={`${theme.textMuted} mt-1`}>
-              Based on your profile
-            </p>
+  {/* Right Side */}
+  <div
+    className={`w-full lg:w-[350px] rounded-2xl p-6 border ${theme.border} bg-gradient-to-br from-blue-500/10 to-cyan-500/10`}
+  >
+    <div className="text-center">
+      <div className="text-6xl mb-4">👑</div>
 
-            <div className="mt-6 space-y-4">
-              {recommendedJobs.map((job, index) => (
-                <div
-                  key={index}
-                  className={`p-5 rounded-2xl ${theme.border} hover:shadow-lg transition-all duration-300`}
-                >
-                  <h3 className="font-bold text-lg">
-                    {job.title}
-                  </h3>
+      <h3 className="text-2xl font-bold">
+        Premium Plan
+      </h3>
 
-                  <p className={`${theme.textMuted} mt-1`}>
-                    {job.company}
-                  </p>
+      <p className={`${theme.textMuted} mt-2`}>
+        Access all advanced interview features.
+      </p>
 
-                  <div className="flex items-center justify-between mt-4">
-                    <span className="text-green-500 font-semibold">
-                      {job.salary}
-                    </span>
+      <div className="my-6">
+        <span className="text-4xl font-bold">₹499</span>
+        <span className={theme.textMuted}> / month</span>
+      </div>
 
-                    <button className="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium transition-all duration-300">
-                      Apply
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className="space-y-3 text-left mb-6">
+        <div className="flex items-center gap-2">
+          ✅ Unlimited AI Evaluations
+        </div>
+
+        <div className="flex items-center gap-2">
+          ✅ Advanced Analytics
+        </div>
+
+        <div className="flex items-center gap-2">
+          ✅ Video Interview Recording
+        </div>
+
+        <div className="flex items-center gap-2">
+          ✅ Priority Support
+        </div>
+      </div>
+
+      <button
+  onClick={() => navigate("/pay")}
+  className="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 text-white"
+>
+  Upgrade Now
+</button>
+    </div>
+  </div>
+</div>
         </div>
       </div>
       <BottomNav/>
