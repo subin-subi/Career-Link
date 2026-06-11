@@ -66,13 +66,15 @@ const [isModalOpen, setIsModalOpen] = useState(false);
   ];
 
   return (
-    <div
-      className={`
-        min-h-screen
-        p-26
-        ${theme.bg}
-      `}
-    >
+   <div className={`
+  min-h-screen
+  px-4
+  pt-24
+  pb-6
+  md:px-6
+  lg:px-8
+  ${theme.bg}
+`}>
         <Navbar/>
       {/* HEADER */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-8">
@@ -82,6 +84,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
             className={`
               text-3xl
               font-bold
+              pt-10
               ${theme.textPrimary}
             `}
           >
@@ -99,7 +102,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3">
           
           <button
             className={`
@@ -282,7 +285,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
                 All Posted Jobs
               </h2>
 
-              <div className="flex flex-col md:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                 
                 {/* Search */}
                 <div className="relative">

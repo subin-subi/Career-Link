@@ -28,7 +28,7 @@ export default function ATSDashboard() {
       <Navbar />
 
       {/* Main Content */}
-      <div className="pt-24 px-4 sm:px-6 lg:px-8 pb-8">
+      <div className="pt-34 px-4 sm:px-6 lg:px-8 pb-8">
         
         {/* Header */}
         <ATSHeader />

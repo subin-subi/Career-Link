@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom";
-import { Home, Briefcase, Bell } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import {
+  Home,
+  Briefcase,
+  Bell,
+  Users,
+  Crown,
+} from "lucide-react";
 
 
 export default function BottomNav() {
@@ -16,7 +23,28 @@ export default function BottomNav() {
         My Network
       </Link>
 
-      <Link to="/notifications" className="flex flex-col items-center text-xs">
+      
+      <Link
+  to="/pay"
+  className="
+    flex flex-col items-center text-xs
+    transition-all duration-300
+    hover:text-amber-400
+  "
+>
+  <Crown
+    size={20}
+    className="
+      transition-transform duration-300
+      hover:scale-110
+    "
+  />
+
+  <span className="mt-1">
+    Premium
+  </span>
+</Link>
+<Link to="/notifications" className="flex flex-col items-center text-xs">
         <Bell size={20} />
         Notification
       </Link>
@@ -25,7 +53,6 @@ export default function BottomNav() {
         <Briefcase size={20} />
         Jobs
       </Link>
-
     </div>
   );
 }

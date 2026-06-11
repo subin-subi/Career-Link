@@ -13,105 +13,110 @@ import ProfileDropdown from "./ProfileDropdown";
 import NotificationDropdown from "./NotificationDropdown";
 
 export default function Menu() {
+  const iconSize = 22;
 
-  const iconSize = 24;
+  const menuStyle =
+    "group flex flex-col items-center px-3 py-2 rounded-xl transition-all duration-300 hover:bg-slate-100 hover:text-blue-600";
 
   return (
-    <div className="flex items-center gap-8 text-sm">
+    <div className="flex items-center gap-3 text-gray-600">
 
       {/* Home */}
-      <Link
-        to="/home"
-        className="flex flex-col items-center hover:text-gray-300"
-      >
-        <FiHome size={iconSize} />
-
-        <span className="text-xs mt-1">
-          Home
-        </span>
+      <Link to="/home" className={menuStyle}>
+        <FiHome
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
+        <span className="text-xs mt-1 font-medium">Home</span>
       </Link>
 
       {/* Network */}
-      <Link
-        to="/network"
-        className="flex flex-col items-center hover:text-gray-300"
-      >
-        <FiUsers size={iconSize} />
-
-        <span className="text-xs mt-1">
-          My Network
-        </span>
+      <Link to="/network" className={menuStyle}>
+        <FiUsers
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
+        <span className="text-xs mt-1 font-medium">Network</span>
       </Link>
 
       {/* Jobs */}
-      <Link
-        to="/job"
-        className="flex flex-col items-center hover:text-gray-300"
-      >
-        <FiBriefcase size={iconSize} />
-
-        <span className="text-xs mt-1">
-          Jobs
-        </span>
+      <Link to="/job" className={menuStyle}>
+        <FiBriefcase
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
+        <span className="text-xs mt-1 font-medium">Jobs</span>
       </Link>
 
       {/* Messaging */}
-      <Link
-        to="/chat"
-        className="flex flex-col items-center hover:text-gray-300"
-      >
-        <FiMessageSquare size={iconSize} />
-
-        <span className="text-xs mt-1">
-          Messaging
-        </span>
+      <Link to="/chat" className={menuStyle}>
+        <FiMessageSquare
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
+        <span className="text-xs mt-1 font-medium">Messages</span>
       </Link>
 
       {/* Notifications */}
       <NotificationDropdown />
 
       {/* Settings */}
-      <Link
-        to="/settings"
-        className="flex flex-col items-center hover:text-gray-300"
-      >
-        <FiSettings size={iconSize} />
-
-        <span className="text-xs mt-1">
-          Settings
-        </span>
+      <Link to="/settings" className={menuStyle}>
+        <FiSettings
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:rotate-90"
+        />
+        <span className="text-xs mt-1 font-medium">Settings</span>
       </Link>
 
       {/* Profile */}
       <ProfileDropdown />
 
       {/* Divider */}
-      <div className="h-8 border-l border-gray-400"></div>
+      <div className="h-10 border-l border-slate-300 mx-2"></div>
 
       {/* Business */}
       <div
         className="
-        flex flex-col items-center
-        hover:text-gray-300
-        cursor-pointer
+          group flex flex-col items-center
+          px-3 py-2 rounded-xl
+          cursor-pointer
+          transition-all duration-300
+          hover:bg-slate-100
+          hover:text-blue-600
         "
       >
-        <FiGrid size={iconSize} />
-
-        <span className="text-xs mt-1">
-          For Business
+        <FiGrid
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
+        <span className="text-xs mt-1 font-medium">
+          Business
         </span>
       </div>
 
       {/* Premium */}
       <Link
         to="/pay"
-        className="flex flex-col items-center hover:text-gray-300"
+        className="
+          group flex flex-col items-center
+          px-3 py-2 rounded-xl
+          transition-all duration-300
+          hover:bg-amber-50
+          hover:text-amber-600
+        "
       >
-        <FiBriefcase size={iconSize} />
+        <FiBriefcase
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
 
-        <span className="text-xs mt-1">
-          Try Premium
+        <span className="text-xs mt-1 font-semibold">
+          Premium
+        </span>
+
+        <span className="text-[10px] text-amber-500">
+          Upgrade
         </span>
       </Link>
     </div>
