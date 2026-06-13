@@ -54,7 +54,7 @@ const Notifications = lazy(() =>
 );
 
 const Message = lazy(() =>
-  import("../pages/User/chat/chat")
+  import("../pages/User/Chat/chat")
 );
 
 const Settings = lazy(() =>
