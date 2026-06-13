@@ -43,7 +43,7 @@ export default function Sidebar() {
         {/* Header */}
         <div className="flex items-center justify-between p-6">
           <h1 className="text-2xl font-bold text-violet-500">
-            CareerLink
+            Zecpath
           </h1>
 
           {/* Close Button */}

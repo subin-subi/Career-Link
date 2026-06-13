@@ -5,7 +5,7 @@ export default function EmployerSidebar() {
     <div className="w-64 min-h-screen bg-blue-950 text-white p-6 flex flex-col">
       
       {/* Logo */}
-      <h1 className="text-2xl font-bold">CareerLink</h1>
+      <h1 className="text-2xl font-bold">Zecpath</h1>
 
       {/* Navigation */}
       <nav className="space-y-4 mt-10 flex-1">
@@ -17,7 +17,7 @@ export default function EmployerSidebar() {
 
       {/* Optional Bottom Section */}
       <div className="pt-6 border-t border-blue-800">
-        <p className="text-sm text-blue-300">© 2026 CareerLink</p>
+        <p className="text-sm text-blue-300">© 2026 Zecpath</p>
       </div>
 
     </div>

@@ -12,7 +12,7 @@ export default function CodingChallenge() {
     setLoading(true);
 
     setTimeout(() => {
-      navigate("/cd"); // change route here
+      navigate("/code"); // change route here
     }, 600); // small delay for animation
   };
 

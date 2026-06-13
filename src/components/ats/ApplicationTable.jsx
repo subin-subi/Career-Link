@@ -4,8 +4,13 @@ import StatusBadge from "./StatusBadge";
 import ActionButtons from "./ActionButtons";
 import Filters from "./Filters";
 import { useTheme } from "../../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 export default function ApplicationTable() {
+
+  
+const navigate = useNavigate();
+
   const [data, setData] = useState(initialData);
 
   const { theme } = useTheme();
@@ -86,150 +91,178 @@ export default function ApplicationTable() {
           ${theme.border}
         `}
       >
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[700px]">
-            <thead
+<tbody>
+  {data.map((app, index) => (
+    <tr
+      key={app.id}
+      className={`
+        border-b
+        ${theme.border}
+        ${theme.hover}
+        transition-all
+        duration-200
+      `}
+    >
+      {/* Candidate */}
+      <td className="px-6 py-5">
+        <div className="flex items-center gap-3">
+          <div
+            className={`
+              h-11
+              w-11
+              rounded-full
+              flex
+              items-center
+              justify-center
+              text-sm
+              font-bold
+              ${theme.profilePrimary}
+              ${theme.primaryText}
+            `}
+          >
+            {app.name.charAt(0)}
+          </div>
+
+          <div>
+            <h3
               className={`
-                ${theme.bg}
-                border-b
-                ${theme.border}
+                font-semibold
+                ${theme.textPrimary}
               `}
             >
-              <tr>
-                <th
-                  className={`
-                    py-4
-                    px-6
-                    text-left
-                    font-semibold
-                    ${theme.textSecondary}
-                  `}
-                >
-                  Candidate
-                </th>
+              {app.name}
+            </h3>
 
-                <th
-                  className={`
-                    px-6
-                    text-left
-                    font-semibold
-                    ${theme.textSecondary}
-                  `}
-                >
-                  Position
-                </th>
-
-                <th
-                  className={`
-                    px-6
-                    text-center
-                    font-semibold
-                    ${theme.textSecondary}
-                  `}
-                >
-                  Status
-                </th>
-
-                <th
-                  className={`
-                    px-6
-                    text-left
-                    font-semibold
-                    ${theme.textSecondary}
-                  `}
-                >
-                  Actions
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {data.map((app, index) => (
-                <tr
-                  key={app.id}
-                  className={`
-                    border-b
-                    ${theme.border}
-                    ${theme.hover}
-                    transition-all
-                    duration-200
-                  `}
-                >
-                  {/* Candidate */}
-                  <td className="px-6 py-5">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`
-                          h-11
-                          w-11
-                          rounded-full
-                          flex
-                          items-center
-                          justify-center
-                          text-sm
-                          font-bold
-                          ${theme.profilePrimary}
-                          ${theme.primaryText}
-                        `}
-                      >
-                        {app.name.charAt(0)}
-                      </div>
-
-                      <div>
-                        <h3
-                          className={`
-                            font-semibold
-                            ${theme.textPrimary}
-                          `}
-                        >
-                          {app.name}
-                        </h3>
-
-                        <p
-                          className={`
-                            text-xs
-                            mt-1
-                            ${theme.textMuted}
-                          `}
-                        >
-                          Candidate #{index + 1}
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-
-                  {/* Position */}
-                  <td
-                    className={`
-                      px-6
-                      font-medium
-                      ${theme.textPrimary}
-                    `}
-                  >
-                    {app.role}
-                  </td>
-
-                  {/* Status */}
-                  <td className="px-6 text-center">
-                    <StatusBadge status={app.status} />
-                  </td>
-
-                  {/* Actions */}
-                  <td className="px-6">
-                    <ActionButtons
-                      onShortlist={() =>
-                        updateStatus(app.id, "Shortlisted")
-                      }
-                      onReject={() =>
-                        updateStatus(app.id, "Rejected")
-                      }
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            <p
+              className={`
+                text-xs
+                mt-1
+                ${theme.textMuted}
+              `}
+            >
+              Candidate #{index + 1}
+            </p>
+          </div>
         </div>
+      </td>
+
+      {/* Position */}
+      <td
+        className={`
+          px-6
+          font-medium
+          ${theme.textPrimary}
+        `}
+      >
+        {app.role}
+      </td>
+
+      {/* Status */}
+      <td className="px-6 text-center">
+        <StatusBadge status={app.status} />
+      </td>
+
+      {/* Actions */}
+      <td className="px-6 py-5">
+        <div className="flex flex-wrap gap-2">
+
+          {/* Pending */}
+          {app.status === "Pending" && (
+            <>
+              <button
+                onClick={() => updateStatus(app.id, "Shortlisted")}
+                className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+              >
+                Shortlist
+              </button>
+
+              <button
+                onClick={() => updateStatus(app.id, "Rejected")}
+                className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
+              >
+                Reject
+              </button>
+            </>
+          )}
+
+          {/* Shortlisted */}
+          {app.status === "Shortlisted" && (
+            <>
+              <button
+                onClick={() =>
+                  updateStatus(app.id, "Interview Scheduled")
+                }
+                className="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
+              >
+                Schedule Interview
+              </button>
+
+              <button
+                onClick={() => updateStatus(app.id, "Rejected")}
+                className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
+              >
+                Reject
+              </button>
+            </>
+          )}
+
+          {/* Interview Scheduled */}
+          {app.status === "Interview Scheduled" && (
+            <button
+              onClick={() => updateStatus(app.id, "Connected")}
+              className="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700"
+            >
+              Connect Candidate
+            </button>
+          )}
+
+          {/* Connected */}
+          {app.status === "Connected" && (
+            <button
+              onClick={() => navigate(`/interviewInstruction`)}
+              className="px-4 py-2 rounded-lg bg-cyan-600 text-white hover:bg-cyan-700"
+            >
+              Start Interview
+            </button>
+          )}
+
+          {/* Interview Completed */}
+          {app.status === "Interview Completed" && (
+            <>
+              <button
+                onClick={() => updateStatus(app.id, "Selected")}
+                className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700"
+              >
+                Select
+              </button>
+
+              <button
+                onClick={() => updateStatus(app.id, "Rejected")}
+                className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
+              >
+                Reject
+              </button>
+            </>
+          )}
+
+          {/* Final Status */}
+          {(app.status === "Selected" ||
+            app.status === "Rejected") && (
+            <span
+              className={`
+                text-sm
+                font-medium
+                ${theme.textMuted}
+              `}
+            >
+              No Actions Available
+            </span>
+          )}
+        </div>
+      </td>
+    </tr>
+  ))}
+</tbody>
       </div>
 
       {/* Mobile Cards */}

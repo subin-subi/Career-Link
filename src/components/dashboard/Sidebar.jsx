@@ -20,7 +20,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         {/* Close Button (Mobile Only) */}
         <div className="flex justify-between items-center mb-10 lg:hidden">
           <h2 className="text-xl font-bold text-gray-800">
-            CareerLink
+            Zecpath
           </h2>
           <button onClick={() => setIsOpen(false)}>
             <FiX size={22} />
@@ -29,7 +29,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
 
         {/* Desktop Logo */}
         <h2 className="hidden lg:block text-xl font-bold text-gray-800 mb-10">
-          CareerLink
+          Zecpath
         </h2>
 
         <nav className="space-y-3">

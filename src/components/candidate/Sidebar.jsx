@@ -36,7 +36,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         {/* Mobile Close Button */}
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-xl font-bold text-gray-800">
-            CareerLink
+            Zecpath
           </h2>
 
           <button

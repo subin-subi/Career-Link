@@ -9,7 +9,7 @@ export default function LeftMenu() {
 
       {/* Logo Text */}
       <div className="text-2xl font-bold text-white">
-        CareerLink
+        Zecpath
       </div>
 
     </div>

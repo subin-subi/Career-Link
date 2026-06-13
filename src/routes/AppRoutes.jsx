@@ -118,7 +118,7 @@ export default function AppRoutes() {
             />
 
             <Route
-              path="/cd"
+              path="/code"
               element={<CodingAssessment />}
             />
 

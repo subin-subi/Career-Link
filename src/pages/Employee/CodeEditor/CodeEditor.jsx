@@ -9,13 +9,15 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Clock3, Timer } from "lucide-react";
-
-
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../../context/ThemeContext";
 
 
 
 export default function CodingAssessment() {
-
+   const { theme } = useTheme();
+const navigate = useNavigate();
 const [inputValue, setInputValue] = useState("");
 const [timeUnit, setTimeUnit] = useState("minutes");
 const [duration, setDuration] = useState(0);
@@ -90,24 +92,84 @@ const seconds = Math.floor(
   (duration % (1000 * 60)) / 1000
 );
 return (
-  <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
-
+<div
+  className={`
+    min-h-screen
+    p-6
+    ${theme.bg}
+    transition-colors
+    duration-300
+  `}
+>
   <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-48px)]">
 
     {/* Code Editor */}
-    <div className="lg:col-span-3 flex flex-col bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden">
-
+    <div
+      className={`
+        lg:col-span-3
+        flex
+        flex-col
+        rounded-2xl
+        overflow-hidden
+        border
+        transition-colors
+        duration-300
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.shadowMd}
+      `}
+    >
   {/* Header */}
-<div className="flex items-center justify-between px-5 py-4 border-b bg-gray-50">
-  
+<div
+  className={`
+    flex
+    items-center
+    justify-between
+    px-5
+    py-4
+    border-b
+    ${theme.cardBg}
+    ${theme.border}
+  `}
+>
   {/* Left Section */}
   <div className="flex items-center gap-4">
-  <select className="px-3 py-2 text-sm font-medium bg-white border border-gray-200 rounded-md text-gray-700 shadow-sm focus:outline-none focus:border-gray-400 focus:ring-1 focus:ring-gray-300">
-  <option>JavaScript (Node.js)</option>
-  <option>Python</option>
-  <option>Java</option>
-</select>
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-medium">
+
+    <select
+      className={`
+        px-3
+        py-2
+        text-sm
+        font-medium
+        rounded-md
+        border
+        outline-none
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.textPrimary}
+        ${theme.shadow}
+        ${theme.focus}
+      `}
+    >
+      <option>JavaScript (Node.js)</option>
+      <option>Python</option>
+      <option>Java</option>
+    </select>
+
+    <div
+      className={`
+        flex
+        items-center
+        gap-2
+        px-3
+        py-1.5
+        rounded-full
+        text-xs
+        font-medium
+        ${theme.successBg}
+        ${theme.successText}
+      `}
+    >
       <CheckCircle size={14} />
       Auto Saved
     </div>
@@ -116,19 +178,83 @@ return (
   {/* Right Section */}
   <div className="flex items-center gap-3">
 
-    <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-100 transition text-sm font-medium">
+    <button
+      className={`
+        flex
+        items-center
+        gap-2
+        px-4
+        py-2
+        rounded-lg
+        border
+        text-sm
+        font-medium
+        transition
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.textPrimary}
+        ${theme.hover}
+      `}
+    >
       <RotateCcw size={16} />
       Reset
     </button>
 
-    <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition text-sm font-medium shadow-sm">
+    <button
+      className={`
+        flex
+        items-center
+        gap-2
+        px-4
+        py-2
+        rounded-lg
+        text-sm
+        font-medium
+        text-white
+        ${theme.info}
+      `}
+    >
       <Play size={16} />
       Run Code
     </button>
 
-    <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white transition text-sm font-medium shadow-sm">
+    <button
+      className={`
+        flex
+        items-center
+        gap-2
+        px-4
+        py-2
+        rounded-lg
+        text-sm
+        font-medium
+        text-white
+        ${theme.success}
+      `}
+    >
       <Send size={16} />
       Submit
+    </button>
+
+    <button
+      onClick={() => navigate("/interview")}
+      className={`
+        flex
+        items-center
+        gap-2
+        px-4
+        py-2
+        rounded-xl
+        border
+        transition-all
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.textPrimary}
+        ${theme.hover}
+      `}
+    >
+      <ArrowLeft size={18} />
+      <span>Back to Interview</span>
     </button>
 
   </div>
@@ -138,43 +264,120 @@ return (
   <div className="grid lg:grid-cols-3 h-[600px]">
     
     {/* Code Editor */}
-<div className="lg:col-span-2 border-r bg-white flex flex-col h-full">
-
+<div
+  className={`
+    lg:col-span-2
+    flex
+    flex-col
+    h-full
+    border-r
+    ${theme.cardBg}
+    ${theme.border}
+  `}
+>
   {/* Top Label */}
-  <div className="px-4 py-2 border-b bg-gray-50 text-sm font-medium">
-    Code Editor
+  <div
+    className={`
+      px-5
+      py-3
+      border-b
+      flex
+      items-center
+      justify-between
+      ${theme.border}
+      ${theme.cardBg}
+    `}
+  >
+    <div>
+      <h3
+        className={`
+          text-sm
+          font-semibold
+          ${theme.textPrimary}
+        `}
+      >
+        Code Editor
+      </h3>
+
+      <p
+        className={`
+          text-xs
+          mt-1
+          ${theme.textMuted}
+        `}
+      >
+        Write and test your solution
+      </p>
+    </div>
+
+    <div
+      className={`
+        px-3
+        py-1
+        rounded-full
+        text-xs
+        font-medium
+        ${theme.infoBg}
+        ${theme.infoText}
+      `}
+    >
+      JavaScript
+    </div>
   </div>
 
   {/* Editor Container */}
-  <div className="flex-1 overflow-hidden p-4">
-    
-    <div className="h-full rounded-xl border border-gray-200 bg-[#0f172a] shadow-lg overflow-hidden flex flex-col">
+  <div className="flex-1 p-5 overflow-hidden">
 
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-[#111827] border-b border-gray-700">
-        
+    <div className="h-full rounded-2xl overflow-hidden shadow-2xl border border-gray-700 flex flex-col bg-[#0f172a]">
+
+      {/* Editor Header */}
+      <div className="flex items-center justify-between px-5 py-3 bg-[#111827] border-b border-gray-700">
+
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-full bg-red-500"></span>
           <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
           <span className="w-3 h-3 rounded-full bg-green-500"></span>
         </div>
 
-        <div className="text-xs text-gray-300 font-medium">
-          JavaScript
-        </div>
+        <div className="flex items-center gap-3">
 
+          <span className="text-xs text-gray-400">
+            main.js
+          </span>
+
+          <div className="px-3 py-1 rounded-lg bg-slate-800 text-blue-300 text-xs font-medium">
+            JavaScript
+          </div>
+        </div>
       </div>
 
-      {/* Code Block */}
-  <div className="flex-1 p-5 bg-[#0f172a] overflow-auto">
-  <textarea
-    className="w-full h-full bg-transparent text-gray-100 font-mono text-sm leading-relaxed outline-none resize-none"
-    value={code}
-    onChange={(e) => setCode(e.target.value)}
-    spellCheck={false}
-  />
-</div>
+      {/* Code Area */}
+      <div className="flex-1 bg-[#0f172a] overflow-auto">
 
+        <textarea
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          spellCheck={false}
+          className="
+            w-full
+            h-full
+            p-6
+            bg-transparent
+            text-gray-100
+            font-mono
+            text-sm
+            leading-7
+            outline-none
+            resize-none
+            placeholder:text-gray-500
+          "
+          placeholder={`function solution(nums) {
+
+  // Write your code here
+
+}`}
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -223,148 +426,318 @@ return (
           
           {/* Progress =========>>>>*/}
 
-<div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+<div
+  className={`
+    rounded-2xl
+    p-6
+    border
+    transition-all
+    duration-300
+    ${theme.cardBg}
+    ${theme.border}
+    ${theme.shadowMd}
+  `}
+>
   {/* Header */}
   <div className="flex items-center gap-3 mb-5">
     <div className="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center">
       <Clock3 className="w-5 h-5 text-indigo-600" />
     </div>
 
-    <div>
-      <h3 className="font-semibold text-gray-900">
-        Assessment Duration
-      </h3>
-      <p className="text-xs text-gray-500">
-        Configure the coding test time limit
-      </p>
-    </div>
+   <div className="space-y-1">
+  <h3
+    className={`
+      text-base
+      font-semibold
+      tracking-tight
+      ${theme.textPrimary}
+    `}
+  >
+    Assessment Duration
+  </h3>
+
+  <p
+    className={`
+      text-sm
+      ${theme.textSecondary}
+    `}
+  >
+    Configure the coding test time limit
+  </p>
+</div>
   </div>
 
 <div className="space-y-4">
-  <label className="block text-sm font-medium text-gray-700">
+
+  {/* Label */}
+  <label
+    className={`
+      block
+      text-sm
+      font-medium
+      ${theme.textPrimary}
+    `}
+  >
     Assessment Duration
   </label>
 
   {/* Duration + Unit */}
   <div className="grid grid-cols-3 gap-3">
+
     <input
       type="number"
       min="1"
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
       placeholder="Duration"
-      className="col-span-2 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+      className={`
+        col-span-2
+        px-4
+        py-3
+        rounded-xl
+        border
+        outline-none
+        transition
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.textPrimary}
+        ${theme.focus}
+      `}
     />
 
     <select
       value={timeUnit}
       onChange={(e) => setTimeUnit(e.target.value)}
-      className="px-4 py-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-indigo-500 outline-none"
+      className={`
+        px-4
+        py-3
+        rounded-xl
+        border
+        outline-none
+        transition
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.textPrimary}
+        ${theme.focus}
+      `}
     >
       <option value="hours">Hr</option>
       <option value="minutes">Min</option>
       <option value="seconds">Sec</option>
     </select>
+
   </div>
 
   {/* Set Timer */}
   <button
     onClick={handleSetTimer}
-    className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition"
+    className={`
+      w-full
+      py-3
+      rounded-xl
+      text-white
+      font-medium
+      transition
+      ${theme.primary}
+      ${theme.primaryHover}
+      ${theme.shadow}
+    `}
   >
     Set Timer
   </button>
 
   {/* Controls */}
- 
+  <div className="grid grid-cols-3 gap-3">
 
-<div className="grid grid-cols-3 gap-3">
-  {/* Start */}
-  <button
-    onClick={handleStart}
-    disabled={duration <= 0 || isRunning}
-    className={`flex items-center justify-center gap-2 py-3 rounded-xl font-medium text-white transition
-      ${
-        duration <= 0 || isRunning
-          ? "bg-green-300 cursor-not-allowed"
-          : "bg-green-600 hover:bg-green-700"
-      }`}
-  >
-    <Play size={16} />
-    Start
-  </button>
+    {/* Start */}
+    <button
+      onClick={handleStart}
+      disabled={duration <= 0 || isRunning}
+      className={`
+        flex
+        items-center
+        justify-center
+        gap-2
+        py-3
+        rounded-xl
+        font-medium
+        text-white
+        transition
+        ${
+          duration <= 0 || isRunning
+            ? "bg-green-300 cursor-not-allowed"
+            : theme.success
+        }
+      `}
+    >
+      <Play size={16} />
+      Start
+    </button>
 
-  {/* Pause */}
-  <button
-    onClick={handlePause}
-    disabled={!isRunning}
-    className={`flex items-center justify-center gap-2 py-3 rounded-xl font-medium text-white transition
-      ${
-        !isRunning
-          ? "bg-amber-300 cursor-not-allowed"
-          : "bg-amber-500 hover:bg-amber-600"
-      }`}
-  >
-    <Pause size={16} />
-    Pause
-  </button>
+    {/* Pause */}
+    <button
+      onClick={handlePause}
+      disabled={!isRunning}
+      className={`
+        flex
+        items-center
+        justify-center
+        gap-2
+        py-3
+        rounded-xl
+        font-medium
+        text-white
+        transition
+        ${
+          !isRunning
+            ? "bg-yellow-300 cursor-not-allowed"
+            : theme.warning
+        }
+      `}
+    >
+      <Pause size={16} />
+      Pause
+    </button>
 
-  {/* Reset */}
-  <button
-    onClick={handleReset}
-    className="flex items-center justify-center py-3 rounded-xl border border-gray-300 hover:bg-gray-50 transition"
-  >
-    <RotateCcw size={18} />
-  </button>
-</div>
+    {/* Reset */}
+    <button
+      onClick={handleReset}
+      className={`
+        flex
+        items-center
+        justify-center
+        py-3
+        rounded-xl
+        border
+        transition
+        ${theme.cardBg}
+        ${theme.border}
+        ${theme.textPrimary}
+        ${theme.hover}
+      `}
+    >
+      <RotateCcw size={18} />
+    </button>
 
-
-
+  </div>
 
 </div>
   {/* Display */}
- <div className="mt-5 rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 p-5 text-white">
-  <div className="flex items-center gap-2 mb-4">
+<div
+  className={`
+    mt-5
+    rounded-2xl
+    p-5
+    ${theme.primary}
+    ${theme.shadowMd}
+  `}
+>
+  {/* Header */}
+  <div
+    className={`
+      flex items-center gap-2 mb-4
+      ${theme.secondaryText}
+    `}
+  >
     <Timer size={18} />
     <span className="text-sm opacity-90">
       Selected Duration
     </span>
   </div>
 
- <div className="flex justify-center items-center gap-3">
-  <div className="text-center">
-    <div className="text-2xl font-bold">
-      {String(hours).padStart(2, "0")}
+  {/* Timer Display */}
+  <div className="flex justify-center items-center gap-4">
+
+    <div className="text-center">
+      <div
+        className={`
+          text-3xl font-bold
+          ${theme.secondaryText}
+        `}
+      >
+        {String(hours).padStart(2, "0")}
+      </div>
+
+      <div
+        className={`
+          text-xs uppercase tracking-wider opacity-80
+          ${theme.secondaryText}
+        `}
+      >
+        Hours
+      </div>
     </div>
-    <div className="text-[10px] uppercase tracking-wide">
-      Hours
+
+    <span
+      className={`
+        text-3xl font-bold opacity-70
+        ${theme.secondaryText}
+      `}
+    >
+      :
+    </span>
+
+    <div className="text-center">
+      <div
+        className={`
+          text-3xl font-bold
+          ${theme.secondaryText}
+        `}
+      >
+        {String(minutes).padStart(2, "0")}
+      </div>
+
+      <div
+        className={`
+          text-xs uppercase tracking-wider opacity-80
+          ${theme.secondaryText}
+        `}
+      >
+        Min
+      </div>
     </div>
+
+    <span
+      className={`
+        text-3xl font-bold opacity-70
+        ${theme.secondaryText}
+      `}
+    >
+      :
+    </span>
+
+    <div className="text-center">
+      <div
+        className={`
+          text-3xl font-bold
+          ${theme.secondaryText}
+        `}
+      >
+        {String(seconds).padStart(2, "0")}
+      </div>
+
+      <div
+        className={`
+          text-xs uppercase tracking-wider opacity-80
+          ${theme.secondaryText}
+        `}
+      >
+        Sec
+      </div>
+    </div>
+
   </div>
 
-  <span className="text-2xl font-bold opacity-70">:</span>
-
-  <div className="text-center">
-    <div className="text-2xl font-bold">
-      {String(minutes).padStart(2, "0")}
-    </div>
-    <div className="text-[10px] uppercase tracking-wide">
-      Min
-    </div>
-  </div>
-
-  <span className="text-2xl font-bold opacity-70">:</span>
-
-  <div className="text-center">
-    <div className="text-2xl font-bold">
-      {String(seconds).padStart(2, "0")}
-    </div>
-    <div className="text-[10px] uppercase tracking-wide">
-      Sec
-    </div>
-  </div>
-</div>
-
-  <div className="mt-4 text-center text-sm opacity-90">
+  {/* Footer */}
+  <div
+    className={`
+      mt-5
+      text-center
+      text-sm
+      opacity-90
+      ${theme.secondaryText}
+    `}
+  >
     Total Duration Configured
   </div>
 </div>
